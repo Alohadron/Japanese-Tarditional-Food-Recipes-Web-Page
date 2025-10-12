@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Food Gallery — Click for Recipes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Food gallery — click an image to view the recipe</h1>
+  <p class="lead">10 delicious dishes. Click any card to open the recipe. Use Esc to close.</p>
+
+  <div class="grid" id="gallery" aria-live="polite"></div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button>
+      <div class="img-wrap" id="modalImageWrap">
+        <img id="modalImage" alt="Large food image">
+      </div>
+      <div class="recipe" id="modalRecipe">
+        <h2 id="modalTitle">Recipe Title</h2>
+
+        <div class="ingredients">
+          <div class="section-title">Ingredients</div>
+          <ul id="modalIngredients"></ul>
+        </div>
+
+        <div class="steps">
+          <div class="section-title">Steps</div>
+          <ol id="modalSteps"></ol>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn" id="printBtn">Print</button>
+          <button class="btn primary" id="saveBtn">Save to device</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
