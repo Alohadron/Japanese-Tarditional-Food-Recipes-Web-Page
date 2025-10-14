@@ -30,13 +30,15 @@ p.lead {
   color: #a8bbd0;
 }
 
+/* ===== Grid Layout ===== */
 .grid {
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 22vw, 280px), 1fr));
+  justify-content: center;
 }
 
-/* Each card = same height and width */
+/* ===== Cards ===== */
 .card {
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
   border-radius: var(--card-radius);
@@ -47,7 +49,7 @@ p.lead {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 260px;
+  aspect-ratio: 3 / 4;
 }
 
 .card:hover {
@@ -55,10 +57,9 @@ p.lead {
   box-shadow: 0 18px 40px rgba(2,6,23,0.7);
 }
 
-/* Image container — fixed size, covers area */
 .thumb {
   width: 100%;
-  height: 160px;
+  flex: 1 1 60%;
   overflow: hidden;
   position: relative;
   background: #111;
@@ -72,64 +73,95 @@ p.lead {
   display: block;
 }
 
-/* Info area stays same height */
 .card-info {
-  flex: 1;
+  flex: 1 1 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 12px;
+  padding: clamp(8px, 1.5vw, 14px);
   background: rgba(255,255,255,0.02);
 }
 
 .title {
-  font-size: 15px;
+  font-size: clamp(13px, 1.3vw, 16px);
   font-weight: 600;
   margin-bottom: 4px;
 }
 
 .sub {
-  font-size: 12px;
+  font-size: clamp(10px, 1vw, 13px);
   color: #93a6c0;
 }
 
-/* Modal */
+/* ===== Modal + Animation ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(2,8,20,0.7);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999;
   padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
-.modal-overlay.open { display: flex; }
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 
+/* Smooth animation for modal box */
 .modal {
-  position: relative;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
   width: 100%;
-  max-width: 960px;
+  max-width: min(960px, 90vw);
   max-height: 90vh;
-  background: linear-gradient(180deg, #071224 0%, #071725 100%);
+  background: linear-gradient(180deg,#071224 0%, #071725 100%);
   border-radius: 12px;
   overflow: auto;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6);
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr clamp(300px, 35vw, 400px);
   gap: 18px;
-  padding: 18px;
+  padding: clamp(14px, 2vw, 20px);
   border: 1px solid rgba(255,255,255,0.03);
-  overflow-y: auto;
 }
 
+.modal-overlay.open .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Fade-in recipe text */
+.modal-overlay.open .recipe {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive modal layout */
+@media (max-width: 880px) {
+  .modal {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Modal Image ===== */
 .modal .img-wrap {
   border-radius: 8px;
   overflow: hidden;
   background: #000;
-  min-height: 320px;
+  height: auto;
+  aspect-ratio: 4 / 3;
 }
 
 .modal .img-wrap img {
@@ -139,7 +171,9 @@ p.lead {
   display: block;
 }
 
+/* ===== Recipe Section ===== */
 .recipe {
+  position: relative; /* ensures close-btn stays inside */
   color: var(--text);
   padding: 6px 2px;
   overflow: auto;
@@ -157,11 +191,13 @@ p.lead {
   font-weight: 700;
 }
 
-.ingredients ul, .steps ol {
+.ingredients ul,
+.steps ol {
   margin: 6px 0 0 18px;
   color: #dfeaf7;
 }
 
+/* ===== Modal Buttons ===== */
 .modal-actions {
   display: flex;
   gap: 8px;
@@ -178,9 +214,12 @@ p.lead {
   cursor: pointer;
   font-weight: 600;
   font-size: 13px;
+  transition: all 0.2s ease;
 }
 
-.btn:active { transform: translateY(1px); }
+.btn:active {
+  transform: translateY(1px);
+}
 
 .btn.primary {
   background: linear-gradient(90deg, var(--accent), #ff9c7a);
@@ -188,34 +227,27 @@ p.lead {
   border: none;
 }
 
+/* ===== Close Button ===== */
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  right: 12px;
+  top: 12px;
+  background: transparent;
   border: none;
-  color: #fff;
+  color: #cfe6f7;
   font-size: 20px;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
   z-index: 10;
+  transition: color 0.2s ease;
 }
 
-.close-btn:hover{
-  background: rgba(3, 196, 3, 0.8);
-  transform: scale(1.1);  
+.close-btn:hover {
+  color: var(--accent);
 }
 
-.modal {
-  overflow-y: auto;
-}
-
+/* Responsive padding */
 @media (max-width: 880px) {
-  .modal { 
+  .modal {
     grid-template-columns: 1fr;
     padding-bottom: 22px;
   }

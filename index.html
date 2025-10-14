@@ -14,13 +14,13 @@
 
   <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
-      <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button>
-      <div class="img-wrap" id="modalImageWrap">
-        <img id="modalImage" alt="Large food image">
-      </div>
-      <div class="recipe" id="modalRecipe">
-        <h2 id="modalTitle">Recipe Title</h2>
+      <div class="modal" role="document">
+        <div class="img-wrap" id="modalImageWrap">
+          <img id="modalImage" alt="Large food image">
+        </div>
+        <div class="recipe" id="modalRecipe">
+          <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button> <!-- ✅ moved here -->
+          <h2 id="modalTitle">Recipe Title</h2>
 
         <div class="ingredients">
           <div class="section-title">Ingredients</div>
