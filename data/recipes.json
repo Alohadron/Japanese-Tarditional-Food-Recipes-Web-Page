@@ -1,0 +1,378 @@
+
+[
+  {
+    "id": "sushi",
+    "title": "Sushi",
+    "image": "images/sushi.jpg",
+    "alt": "Assorted sushi rolls",
+    "ingredients": [
+      "Sushi rice",
+      "Nori (seaweed) sheets",
+      "Fresh fish (salmon, tuna)",
+      "Vegetables (cucumber, avocado)",
+      "Soy sauce",
+      "Wasabi"
+    ],
+    "steps": [
+      "Prepare sushi rice and let it cool.",
+      "Place a nori sheet on a bamboo mat.",
+      "Spread a thin layer of rice on the nori.",
+      "Add slices of fish and vegetables.",
+      "Roll tightly and slice into pieces.",
+      "Serve with soy sauce and wasabi."
+    ]
+  },
+  {
+    "id": "udon",
+    "title": "Udon",
+    "image": "images/udon.jpg",
+    "alt": "Bowl of udon noodles",
+    "ingredients": [
+      "Udon noodles",
+      "Dashi broth",
+      "Soy sauce",
+      "Mirin",
+      "Green onions",
+      "Tempura flakes"
+    ],
+    "steps": [
+      "Cook udon noodles according to package instructions.",
+      "In a pot, combine dashi broth, soy sauce, and mirin.",
+      "Bring to a simmer and add cooked noodles.",
+      "Serve hot, garnished with green onions and tempura flakes."
+    ]
+  },
+  {
+    "id": "tofu",
+    "title": "Tofu",
+    "image": "images/tofu.jpg",
+    "alt": "Grilled tofu slices",
+    "ingredients": [
+      "Firm tofu",
+      "Soy sauce",
+      "Sesame oil",
+      "Garlic",
+      "Ginger",
+      "Green onions"
+    ],
+    "steps": [
+      "Press tofu to remove excess moisture.",
+      "Cut into slices and marinate in soy sauce, sesame oil, garlic, and ginger.",
+      "Grill or pan-fry until golden brown.",
+      "Serve garnished with chopped green onions."
+    ]
+  },
+  {
+    "id": "tempura",
+    "title": "Tempura",
+    "image": "images/tempura.jpg",
+    "alt": "Assorted tempura vegetables and shrimp",
+    "ingredients": [
+      "Shrimp",
+      "Assorted vegetables (sweet potato, zucchini, bell pepper)",
+      "Tempura batter mix",
+      "Ice water",
+      "Vegetable oil"
+    ],
+    "steps": [
+      "Prepare tempura batter by mixing batter mix with ice water.",
+      "Heat vegetable oil in a deep pan.",
+      "Dip shrimp and vegetables into batter and fry until crispy.",
+      "Drain excess oil and serve hot."
+    ]
+  },
+  {
+    "id": "yakitori",
+    "title": "Yakitori",
+    "image": "images/yakitori.jpg",
+    "alt": "Grilled yakitori skewers",
+    "ingredients": [
+      "Chicken thighs",
+      "Green onions",
+      "Soy sauce",
+      "Sake",
+      "Mirin",
+      "Sugar"
+    ],
+    "steps": [
+      "Cut chicken into bite-sized pieces.",
+      "Thread chicken and green onions onto skewers.",
+      "Combine soy sauce, sake, mirin, and sugar to make tare sauce.",
+      "Grill skewers, basting with tare sauce until cooked through.",
+      "Serve hot."
+    ]
+  },
+  {
+    "id": "ramen",
+    "title": "Ramen",
+    "image": "images/ramen.jpg",
+    "alt": "Bowl of ramen noodles",
+    "ingredients": [
+      "Ramen noodles",
+      "Pork broth",
+      "Soy sauce",
+      "Chashu pork",
+      "Boiled egg",
+      "Bamboo shoots",
+      "Green onions"
+    ],
+    "steps": [
+      "Cook ramen noodles according to package instructions.",
+      "Heat pork broth and add soy sauce.",
+      "Place cooked noodles in a bowl and pour broth over.",
+      "Top with chashu pork, boiled egg, bamboo shoots, and green onions.",
+      "Serve hot."
+    ]
+  },
+  {
+    "id": "donburi",
+    "title": "Donburi",
+    "image": "images/donburi.jpg",
+    "alt": "Donburi rice bowl",
+    "ingredients": [
+      "Cooked rice",
+      "Chicken or beef",
+      "Egg",
+      "Onions",
+      "Soy sauce",
+      "Mirin"
+    ],
+    "steps": [
+      "Cook meat and onions in a pan.",
+      "Add soy sauce and mirin to the pan.",
+      "Pour beaten egg over and cook until set.",
+      "Serve over a bowl of hot rice."
+    ]
+  },
+  {
+    "id": "oden",
+    "title": "Oden",
+    "image": "images/oden.jpg",
+    "alt": "Oden hot pot",
+    "ingredients": [
+      "Daikon radish",
+      "Boiled eggs",
+      "Konjac",
+      "Fish cakes",
+      "Kombu",
+      "Dashi broth"
+    ],
+    "steps": [
+      "Prepare dashi broth with kombu.",
+      "Add daikon, boiled eggs, konjac, and fish cakes to the pot.",
+      "Simmer until ingredients are tender.",
+      "Serve hot."
+    ]
+  },
+  {
+    "id": "tamagoyaki",
+    "title": "Tamagoyaki",
+    "image": "images/tamagoyaki.jpg",
+    "alt": "Tamagoyaki rolled omelette",
+    "ingredients": [
+      "Eggs",
+      "Soy sauce",
+      "Sugar",
+      "Mirin",
+      "Vegetable oil"
+    ],
+    "steps": [
+      "Beat eggs with soy sauce, sugar, and mirin.",
+      "Heat oil in a rectangular pan.",
+      "Pour a thin layer of egg mixture and cook until set.",
+      "Roll up and push to the side.",
+      "Add more egg mixture and repeat until all eggs are used."
+    ]
+  },
+  {
+    "id": "soba",
+    "title": "Soba",
+    "image": "images/soba.jpg",
+    "alt": "Bowl of soba noodles",
+    "ingredients": [
+      "Soba noodles",
+      "Dashi broth",
+      "Soy sauce",
+      "Mirin",
+      "Green onions",
+      "Tempura flakes"
+    ],
+    "steps": [
+      "Cook soba noodles according to package instructions.",
+      "Prepare dashi broth with soy sauce and mirin.",
+      "Serve noodles in a bowl and pour broth over.",
+      "Garnish with green onions and tempura flakes."
+    ]
+  },
+  {
+    "id": "tonkatsu",
+    "title": "Tonkatsu",
+    "image": "images/tonkatsu.jpg",
+    "alt": "Breaded and fried pork cutlet",
+    "ingredients": [
+      "Pork loin",
+      "Salt and pepper",
+      "Flour",
+      "Egg",
+      "Panko breadcrumbs",
+      "Vegetable oil"
+    ],
+    "steps": [
+      "Season pork with salt and pepper.",
+      "Dredge in flour, dip in beaten egg, and coat with panko.",
+      "Fry in hot oil until golden brown.",
+      "Drain excess oil and serve with tonkatsu sauce."
+    ]
+  },
+  {
+    "id": "sukiyaki",
+    "title": "Sukiyaki",
+    "image": "images/sukiyaki.jpg",
+    "alt": "Sukiyaki hot pot",
+    "ingredients": [
+      "Thinly sliced beef",
+      "Tofu",
+      "Shiitake mushrooms",
+      "Napa cabbage",
+      "Shirataki noodles",
+      "Soy sauce",
+      "Sugar",
+      "Mirin"
+    ],
+    "steps": [
+      "Combine soy sauce, sugar, and mirin to make sauce.",
+      "In a hot pot, cook beef slices until browned.",
+      "Add tofu, mushrooms, cabbage, and noodles.",
+      "Pour sauce over and simmer until vegetables are tender.",
+      "Serve with raw egg for dipping."
+    ]
+  },
+  {
+    "id": "miso-soup",
+    "title": "Miso Soup",
+    "image": "images/miso soup.jpg",
+    "alt": "Bowl of miso soup",
+    "ingredients": [
+      "Miso paste",
+      "Dashi broth",
+      "Tofu",
+      "Seaweed",
+      "Green onions"
+    ],
+    "steps": [
+      "Prepare dashi broth.",
+      "Dissolve miso paste into the broth.",
+      "Add tofu and seaweed.",
+      "Simmer briefly and garnish with green onions."
+    ]
+  },
+  {
+    "id": "curry-rice",
+    "title": "Curry Rice",
+    "image": "images/curry rice.jpg",
+    "alt": "Plate of curry rice",
+    "ingredients": [
+      "Curry roux",
+      "Beef or chicken",
+      "Potatoes",
+      "Carrots",
+      "Onions",
+      "Rice"
+    ],
+    "steps": [
+      "Brown meat and vegetables in a pot.",
+      "Add water and bring to a boil.",
+      "Stir in curry roux and simmer until thickened.",
+      "Serve over cooked rice."
+    ]
+  },
+  {
+    "id": "onigiri",
+    "title": "Onigiri",
+    "image": "images/onigiri.jpg",
+    "alt": "Rice balls with fillings",
+    "ingredients": [
+      "Cooked rice",
+      "Salt",
+      "Nori sheets",
+      "Fillings (plum, salmon, tuna)"
+    ],
+    "steps": [
+      "Wet hands with salted water.",
+      "Shape rice into triangles.",
+      "Place desired filling in the center.",
+      "Wrap with nori and serve."
+    ]
+  },
+    {
+    "id": "gyoza",
+    "title": "Gyoza",
+    "image": "images/gyoza.jpg",
+    "alt": "Pan-fried gyoza dumplings",
+    "ingredients": [
+      "Gyoza wrappers",
+      "Ground pork or chicken",
+      "Cabbage, finely chopped",
+      "Garlic, minced",
+      "Ginger, minced",
+      "Green onions, chopped",
+      "Soy sauce",
+      "Sesame oil"
+    ],
+    "steps": [
+      "Mix meat, cabbage, garlic, ginger, green onions, soy sauce, and sesame oil in a bowl.",
+      "Place a small amount of filling in each wrapper and fold to seal.",
+      "Heat oil in a skillet, arrange gyoza, and fry until bottoms are golden.",
+      "Add water, cover, and steam for 3–5 minutes until cooked through.",
+      "Serve hot with dipping sauce (soy sauce + vinegar + chili oil)."
+    ]
+  },
+  {
+    "id": "takoyaki",
+    "title": "Takoyaki",
+    "image": "images/takoyaki.jpg",
+    "alt": "Takoyaki balls with sauce",
+    "ingredients": [
+      "Takoyaki batter mix or flour + dashi stock",
+      "Octopus pieces",
+      "Green onions, chopped",
+      "Pickled ginger",
+      "Tempura scraps (tenkasu)",
+      "Takoyaki sauce",
+      "Japanese mayonnaise",
+      "Bonito flakes",
+      "Seaweed powder"
+    ],
+    "steps": [
+      "Prepare batter according to instructions.",
+      "Preheat a takoyaki pan and grease each mold.",
+      "Pour batter into molds and add octopus, green onions, ginger, and tempura scraps.",
+      "Turn balls using skewers as they cook until golden brown.",
+      "Serve hot, drizzled with takoyaki sauce, mayonnaise, bonito flakes, and seaweed powder."
+    ]
+  },
+  {
+    "id": "yakisoba",
+    "title": "Yakisoba",
+    "description": "Savory stir-fried noodles with vegetables and your choice of protein.",
+    "image": "images/yakisoba.jpg",
+    "alt": "Fried yakisoba noodles",
+    "ingredients": [
+      "Yakisoba noodles",
+      "Cabbage, shredded",
+      "Carrot, julienned",
+      "Onion, sliced",
+      "Protein (pork, chicken, or tofu)",
+      "Yakisoba sauce",
+      "Vegetable oil",
+      "Pickled ginger (beni shoga)"
+    ],
+    "steps": [
+      "Heat oil in a large pan or wok.",
+      "Add protein and cook until done.",
+      "Add vegetables and stir-fry until slightly softened.",
+      "Add noodles and pour yakisoba sauce over; stir well to combine.",
+      "Serve hot, garnished with pickled ginger."
+    ]
+  }
+]
