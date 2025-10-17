@@ -73,6 +73,31 @@ function openModal(id) {
   img.src = imgs[currentImageIndex];
   img.alt = recipe.alt || recipe.title;
   imgWrap.appendChild(img);
+  
+    // Handle YouTube video
+  const videoContainer = document.getElementById('videoContainer');
+  const videoFrameWrap = document.getElementById('videoFrameWrap');
+  videoFrameWrap.innerHTML = ''; // clear previous video
+
+  if (recipe.video) {
+    // Convert normal YouTube link to embeddable form
+    const videoId = recipe.video.split('v=')[1]?.split('&')[0];
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = embedUrl;
+    iframe.width = '100%';
+    iframe.height = '315';
+    iframe.frameBorder = '0';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+
+    videoFrameWrap.appendChild(iframe);
+    videoContainer.style.display = 'block';
+  } else {
+    videoContainer.style.display = 'none';
+  }
+
 
   // --- Add arrows only if multiple images exist ---
   if (imgs.length > 1) {
