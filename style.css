@@ -169,14 +169,14 @@ p.lead {
   }
 }
 
-/* ===== Modal Image ===== */
+/* ===== Image Section (left) ===== */
 .img-wrap {
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
   background: #000;
-  height: auto;
-  aspect-ratio: 4 / 3;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  height: 100%;
 }
 
 .modal .img-wrap img {
@@ -227,21 +227,25 @@ p.lead {
   border-bottom-right-radius: 0;
 }
 
-/* ===== Recipe Section ===== */
+/* ===== Recipe Section (right) ===== */
 .recipe {
-  position: relative; /* ensures close-btn stays inside */
+  position: relative;
   color: var(--text);
-  padding: 6px 2px;
-  overflow: auto;
+  padding: clamp(20px, 2.5vw, 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255,255,255,0.02);
+  text-align: left;
 }
 
 .recipe h2 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
+  margin: 0 0 10px 0;
+  font-size: clamp(18px, 1.6vw, 22px);
 }
 
 .section-title {
-  margin: 12px 0 6px 0;
+  margin: 14px 0 6px 0;
   font-size: 13px;
   color: #b6c7db;
   font-weight: 700;
@@ -312,15 +316,3 @@ p.lead {
     padding-right: 6px;
   }
 }
-
-.video-container h3 {
-  margin-bottom: 8px;
-  color: #b6c7db;
-  font-size: 15px;
-}
-
-.video-container iframe {
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-

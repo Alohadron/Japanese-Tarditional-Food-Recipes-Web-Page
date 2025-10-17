@@ -24,29 +24,35 @@
       <!-- Recipe content -->
       <div class="recipe" id="modalRecipe">
         <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button>
-        <h2 id="modalTitle">Recipe Title</h2>
-      
-        <div class="ingredients">
-          <div class="section-title">Ingredients</div>
-          <ul id="modalIngredients"></ul>
+        
+        <!-- Scrollable content wrapper -->
+        <div class="recipe-content">
+          <h2 id="modalTitle">Recipe Title</h2>
+        
+          <div class="ingredients">
+            <div class="section-title">Ingredients</div>
+            <ul id="modalIngredients"></ul>
+          </div>
+        
+          <div class="steps">
+            <div class="section-title">Steps</div>
+            <ol id="modalSteps"></ol>
+          </div>
+        
+          <!-- YouTube Video -->
+          <div id="videoContainer" class="video-container" style="margin-top: 14px; display: none;">
+            <h3>Watch how it's made:</h3>
+            <div id="videoFrameWrap"></div>
+          </div>
         </div>
-      
-        <div class="steps">
-          <div class="section-title">Steps</div>
-          <ol id="modalSteps"></ol>
-        </div>
-      
-        <!-- YouTube Video -->
-        <div id="videoContainer" class="video-container" style="margin-top: 14px; display: none;">
-          <h3>Watch how it's made:</h3>
-          <div id="videoFrameWrap"></div>
-        </div>
-      
+        
+        <!-- Buttons pinned at bottom -->
         <div class="modal-actions">
           <button class="btn" id="printBtn">Print</button>
           <button class="btn primary" id="saveBtn">Save to device</button>
         </div>
       </div>
+      
     </div>
   </div>
 
