@@ -86,13 +86,14 @@ p.lead {
 }
 
 .card-info {
-  flex: 1 1 40%;
+  flex: 0 0 auto; /* don't force height; adapt to content */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  padding: clamp(8px, 1.5vw, 14px);
+  padding: clamp(10px, 1.5vw, 16px);
   background: rgba(255,255,255,0.02);
+  min-height: 90px; /* optional: ensures consistent look */
 }
 
 .title {
