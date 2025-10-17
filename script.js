@@ -25,9 +25,11 @@ function renderGallery() {
     const thumb = document.createElement('div');
     thumb.className = 'thumb';
     const img = document.createElement('img');
-    img.src = r.image;
-    img.alt = r.alt;
+    const firstImage = Array.isArray(r.images) && r.images.length ? r.images[0] : r.image;
+    img.src = firstImage;
+    img.alt = r.alt || r.title;
     thumb.appendChild(img);
+      
 
     const info = document.createElement('div');
     info.className = 'card-info';
@@ -60,8 +62,45 @@ const saveBtn = document.getElementById('saveBtn');
 function openModal(id) {
   const recipe = recipes.find(x => x.id === id);
   if (!recipe) return;
-  modalImage.src = recipe.image;
-  modalImage.alt = recipe.alt;
+
+  const imgWrap = document.querySelector('.img-wrap');
+  imgWrap.innerHTML = ''; // clear previous content
+
+  const imgs = recipe.images || [recipe.image];
+  let currentImageIndex = 0;
+
+  const img = document.createElement('img');
+  img.src = imgs[currentImageIndex];
+  img.alt = recipe.alt || recipe.title;
+  imgWrap.appendChild(img);
+
+  // --- Add arrows only if multiple images exist ---
+  if (imgs.length > 1) {
+    const leftArrow = document.createElement('div');
+    leftArrow.className = 'modal-arrow left';
+    leftArrow.innerHTML = '‹';
+
+    const rightArrow = document.createElement('div');
+    rightArrow.className = 'modal-arrow right';
+    rightArrow.innerHTML = '›';
+
+    leftArrow.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex - 1 + imgs.length) % imgs.length;
+      img.src = imgs[currentImageIndex];
+    });
+
+    rightArrow.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex + 1) % imgs.length;
+      img.src = imgs[currentImageIndex];
+    });
+
+    imgWrap.appendChild(leftArrow);
+    imgWrap.appendChild(rightArrow);
+  }
+
+
   modalTitle.textContent = recipe.title;
 
   modalIngredients.innerHTML = '';

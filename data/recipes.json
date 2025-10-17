@@ -4,7 +4,11 @@
     "id": "sushi",
     "title": "🍣 Sushi",
     "description": "Sushi Vinegared rice paired with fresh fish, vegetables, or egg — Japan’s iconic bite-sized delicacy known for its balance and simplicity.",
-    "image": "images/sushi.jpg",
+    "images": [
+      "images/sushi/sushi1.jpg",
+      "images/sushi/sushi2.jpg",
+      "images/sushi/sushi3.jpg"
+    ],
     "alt": "Assorted sushi rolls",
     "ingredients": [
       "Sushi rice",
@@ -27,7 +31,11 @@
     "id": "udon",
     "title": "🍜 Udon",
     "description": "Thick, chewy wheat noodles served in a savory broth or chilled with dipping sauce — comforting and versatile year-round.",
-    "image": "images/udon.jpg",
+    "images": [
+      "images/udon/udon1.jpg",
+      "images/udon/udon2.jpg",
+      "images/udon/udon3.jpg"
+    ],
     "alt": "Bowl of udon noodles",
     "ingredients": [
       "Udon noodles",
@@ -48,7 +56,11 @@
     "id": "tofu",
     "title": "🍢 Tofu",
     "description": "Soft soy curd with a delicate flavor that absorbs seasonings beautifully, often used in soups, stir-fries, and healthy dishes.",
-    "image": "images/tofu.jpg",
+    "images": [
+      "images/tofu/tofu1.jpg",
+      "images/tofu/tofu2.jpg",
+      "images/tofu/tofu3.jpg"
+    ],
     "alt": "Grilled tofu slices",
     "ingredients": [
       "Firm tofu",
@@ -69,7 +81,7 @@
     "id": "tempura",
     "title": "🍤 Tempura",
     "description": "Lightly battered and deep-fried seafood or vegetables, crisp on the outside and tender inside — best enjoyed with dipping sauce.",
-    "image": "images/tempura.jpg",
+    "images": "images/tempura.jpg",
     "alt": "Assorted tempura vegetables and shrimp",
     "ingredients": [
       "Shrimp",
@@ -89,7 +101,7 @@
     "id": "yakitori",
     "title": "🍡 Yakitori",
     "description": "Grilled skewers of juicy chicken glazed with sweet-savory tare sauce, a popular Japanese street and izakaya favorite.",
-    "image": "images/yakitori.jpg",
+    "images": "images/yakitori.jpg",
     "alt": "Grilled yakitori skewers",
     "ingredients": [
       "Chicken thighs",
@@ -111,7 +123,7 @@
     "id": "ramen",
     "title": "🍜 Ramen",
     "description": "Hearty noodle soup served in rich broth with toppings like pork, egg, and scallions — the ultimate Japanese comfort food.",
-    "image": "images/ramen.jpg",
+    "images": "images/ramen.jpg",
     "alt": "Bowl of ramen noodles",
     "ingredients": [
       "Ramen noodles",
@@ -134,7 +146,7 @@
     "id": "donburi",
     "title": "🍚 Donburi",
     "description": "A warm bowl of rice topped with flavorful ingredients like beef, egg, or tempura — a quick, satisfying one-dish meal.",
-    "image": "images/donburi.jpg",
+    "images": "images/donburi.jpg",
     "alt": "Donburi rice bowl",
     "ingredients": [
       "Cooked rice",
@@ -155,7 +167,7 @@
     "id": "oden",
     "title": "🍢 Oden",
     "description": "A winter stew of fish cakes, eggs, tofu, and daikon simmered in a light soy broth — warm, homey, and comforting.",
-    "image": "images/oden.jpg",
+    "images": "images/oden.jpg",
     "alt": "Oden hot pot",
     "ingredients": [
       "Daikon radish",
@@ -176,7 +188,7 @@
     "id": "tamagoyaki",
     "title": "🍳 Tamagoyaki",
     "description": "A slightly sweet rolled omelet made from seasoned eggs — fluffy, layered, and often served in sushi or bento boxes.",
-    "image": "images/tamagoyaki.jpg",
+    "images": "images/tamagoyaki.jpg",
     "alt": "Tamagoyaki rolled omelette",
     "ingredients": [
       "Eggs",
@@ -197,7 +209,7 @@
     "id": "soba",
     "title": "🍜 Soba",
     "description": "Nutty buckwheat noodles served hot or cold with dipping sauce — refreshing, light, and rich in flavor.",
-    "image": "images/soba.jpg",
+    "images": "images/soba.jpg",
     "alt": "Bowl of soba noodles",
     "ingredients": [
       "Soba noodles",
@@ -218,7 +230,7 @@
     "id": "tonkatsu",
     "title": "🐖 Tonkatsu",
     "description": "Crispy breaded pork cutlet served with shredded cabbage and tangy sauce — crunchy, juicy, and deeply satisfying.",
-    "image": "images/tonkatsu.jpg",
+    "images": "images/tonkatsu.jpg",
     "alt": "Breaded and fried pork cutlet",
     "ingredients": [
       "Pork loin",
@@ -239,7 +251,7 @@
     "id": "sukiyaki",
     "title": "🥘 Sukiyaki",
     "description": "Thin slices of beef cooked with vegetables, tofu, and noodles in a sweet soy broth — often shared straight from the pot.",
-    "image": "images/sukiyaki.jpg",
+    "images": "images/sukiyaki.jpg",
     "alt": "Sukiyaki hot pot",
     "ingredients": [
       "Thinly sliced beef",
@@ -263,7 +275,7 @@
     "id": "miso-soup",
     "title": "🍲 Miso Soup",
     "description": "Classic Japanese soup made with miso paste, tofu, and seaweed — light yet deeply savory, served with nearly every meal.",
-    "image": "images/miso soup.jpg",
+    "images": "images/miso soup.jpg",
     "alt": "Bowl of miso soup",
     "ingredients": [
       "Miso paste",
@@ -283,7 +295,7 @@
     "id": "curry-rice",
     "title": "🍛 Curry Rice",
     "description": "Japanese-style curry with thick, mildly spiced sauce over rice — hearty, sweet, and comforting.",
-    "image": "images/curry rice.jpg",
+    "images": "images/curry rice.jpg",
     "alt": "Plate of curry rice",
     "ingredients": [
       "Curry roux",
@@ -304,7 +316,7 @@
     "id": "onigiri",
     "title": "🍙 Onigiri",
     "description": "Rice balls filled with ingredients like salmon or pickled plum and wrapped in seaweed — a beloved portable snack.",
-    "image": "images/onigiri.jpg",
+    "images": "images/onigiri.jpg",
     "alt": "Rice balls with fillings",
     "ingredients": [
       "Cooked rice",
@@ -323,7 +335,7 @@
     "id": "gyoza",
     "title": "🥟 Gyoza",
     "description": "Pan-fried dumplings filled with pork, cabbage, and garlic — crisp on the bottom, tender on top, and perfect with soy dipping sauce.",
-    "image": "images/gyoza.jpg",
+    "images": "images/gyoza.jpg",
     "alt": "Pan-fried gyoza dumplings",
     "ingredients": [
       "Gyoza wrappers",
@@ -347,7 +359,7 @@
     "id": "takoyaki",
     "title": "🐙 Takoyaki",
     "description": "Crispy golden balls of batter filled with octopus, topped with sauce, mayo, and bonito flakes — Osaka’s famous street food.",
-    "image": "images/takoyaki.jpg",
+    "images": "images/takoyaki.jpg",
     "alt": "Takoyaki balls with sauce",
     "ingredients": [
       "Takoyaki batter mix or flour + dashi stock",
@@ -372,7 +384,7 @@
     "id": "yakisoba",
     "title": "🍜 Yakisoba",
     "description": "Savory stir-fried noodles with vegetables and your choice of protein.",
-    "image": "images/yakisoba.jpg",
+    "images": "images/yakisoba.jpg",
     "alt": "Fried yakisoba noodles",
     "ingredients": [
       "Yakisoba noodles",

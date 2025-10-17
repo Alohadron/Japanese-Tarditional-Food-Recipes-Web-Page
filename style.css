@@ -170,7 +170,8 @@ p.lead {
 }
 
 /* ===== Modal Image ===== */
-.modal .img-wrap {
+.img-wrap {
+  position: relative;
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -183,6 +184,47 @@ p.lead {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* === Arrows on image edges === */
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 42px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  z-index: 5;
+  transition: background 0.2s ease, opacity 0.25s ease;
+  opacity: 0;
+}
+
+.img-wrap:hover .modal-arrow {
+  opacity: 1;
+}
+
+.modal-arrow:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal-arrow.left {
+  left: 0; /* sits exactly at left image edge */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.modal-arrow.right {
+  right: 0; /* sits exactly at right image edge */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* ===== Recipe Section ===== */
