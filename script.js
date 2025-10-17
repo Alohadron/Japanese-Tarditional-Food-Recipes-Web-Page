@@ -1,6 +1,8 @@
 // Fetch recipes from JSON
 let recipes = [];
 
+let lastFocusedCard = null; // store the last clicked card
+
 fetch('data/recipes.json')
   .then(response => response.json())
   .then(data => {
@@ -37,7 +39,10 @@ function renderGallery() {
 
     card.appendChild(thumb);
     card.appendChild(info);
-    card.addEventListener('click', () => openModal(r.id));
+    card.addEventListener('click', () => {
+      lastFocusedCard = card; // remember which card was clicked
+      openModal(r.id);
+    });
     gallery.appendChild(card);
   });
 }
@@ -81,8 +86,7 @@ function openModal(id) {
 function closeModal() {
   overlay.classList.remove('open');
   overlay.setAttribute('aria-hidden', 'true');
-  const firstCard = document.querySelector('.card');
-  if (firstCard) firstCard.focus();
+  if (lastFocusedCard) lastFocusedCard.focus(); // restore focus to the same card
 }
 
 closeBtn.addEventListener('click', closeModal);
