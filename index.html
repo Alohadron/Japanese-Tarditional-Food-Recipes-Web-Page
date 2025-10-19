@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Food Gallery — Click for Recipes</title>
+  <title>Food Gallery</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+
 </head>
 <body>
- 
+
   <header class="hero">
     <h1>日本の味覚</h1>
     <p class="subtitle">Discover the art, harmony, and authentic tastes of Japanese cuisine</p>
@@ -19,17 +23,17 @@
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       
-      <!-- Image carousel -->
+      <!-- Image (left on desktop, top on mobile) -->
       <div class="img-wrap" id="modalImageWrap">
         <img id="modalImage" alt="Large food image">
       </div>
     
-      <!-- Recipe content -->
+      <!-- Recipe (scrollable content) -->
       <div class="recipe" id="modalRecipe">
         <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button>
         
         <!-- Scrollable content wrapper -->
-        <div class="recipe-content">
+        <div class="recipe-content" id="recipeContent">
           <h2 id="modalTitle">Recipe Title</h2>
         
           <div class="ingredients">
@@ -47,11 +51,17 @@
             <h3>Watch how it's made:</h3>
             <div id="videoFrameWrap"></div>
           </div>
+
+          <!-- Optional locations list -->
           <div class="locations" id="modalLocations">
             <div class="section-title">Where to Try It</div>
             <ul id="modalLocationsList"></ul>
           </div>
         </div>
+
+        <!-- gradient shadows (decorative, JS toggles visibility) -->
+        <div class="scroll-fade fade-top" aria-hidden="true"></div>
+        <div class="scroll-fade fade-bottom" aria-hidden="true"></div>
       </div>
       
     </div>

@@ -1,10 +1,18 @@
 :root {
   --gap: 12px;
   --card-radius: 10px;
-  --bg: #0f1720;
-  --card-bg: #0b1220;
   --accent: #ff7a59;
   --text: #e6eef6;
+
+  /* overlay + effects */
+  --overlay-bg: rgba(10,12,20,0.45);
+  --overlay-blur: 8px;
+  --modal-radius: 12px;
+
+  /* scroll fades */
+  --fade-size: 18px;
+  --fade-top-opacity: 0;     /* JS toggles to 1 when not at top */
+  --fade-bottom-opacity: 0;  /* JS toggles to 1 when not at bottom */
 }
 
 * { box-sizing: border-box; }
@@ -13,56 +21,58 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('patterns/pexels-eva-bronzini-5761962.jpg');
-  background-size: cover;      /* Makes it fill the screen while preserving aspect ratio */
-  background-position: center; /* Centers the image */
-  background-attachment: fixed;/* Keeps it fixed on scroll (parallax effect) */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-body.modal-open {
-  overflow: hidden;
-}
+body.modal-open { overflow: hidden; }
 
+/* Branding */
 h1, h2, .title {
   font-family: 'Sawarabi Mincho', serif;
-  color: #ffffff; /* Vermilion red */
+  color: #ffffff;
   letter-spacing: 1px;
 }
-
-.hero {
-  text-align: center;
-  padding: 40px 0 20px;
-
+h1 {
+  font-size: clamp(48px, 6vw, 96px); /* responsive modern sizing */
+  letter-spacing: 3px;
 }
 
+.hero { text-align: center; padding: 40px 0 20px; }
 .subtitle {
   font-size: 16px;
   color: #ffffff;
   margin-top: 8px;
   font-style: italic;
   background-color: #f99b2fb8;
-  display: inline-block; /* ✅ makes background wrap only the text */
-  padding: 4px 8px;      /* (optional) for nicer spacing around the text */
-  border-radius: 4px;    /* (optional) for a softer, elegant appearance */
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
-
-/* ===== Grid Layout ===== */
+/* ===== Grid ===== */
 .grid {
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(clamp(270px, 33vw, 420px), 1fr));
   justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
 }
 
 /* ===== Cards ===== */
 .card {
-  background: rgba(255, 149, 0, 0.6);  
+  position: relative;
+  background: rgba(255, 149, 0, 0.6);
   border-radius: var(--card-radius);
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 2px solid transparent; /* default state */
   overflow: hidden;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   display: flex;
@@ -70,69 +80,40 @@ h1, h2, .title {
   justify-content: flex-start;
   aspect-ratio: 3 / 4;
 }
-
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
-
-.card-info .desc {
-  font-size: clamp(11px, 1vw, 14px);
-  color: #fcfcfc;
-  margin-bottom: 4px;
-  line-height: 1.2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* limits to 2 lines */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .thumb {
+  margin-top: 3px; /* creates breathing room above */
   width: 100%;
   flex: 1 1 60%;
   overflow: hidden;
-  position: relative;
   background: #111;
   border-radius: 4px;
 }
-
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+.thumb img { 
+  width: 100%; height: 100%; object-fit: cover; display: block; 
 }
+
 
 .card-info {
-  flex: 0 0 auto; /* don't force height; adapt to content */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex: 0 0 auto;
+  display: flex; flex-direction: column; align-items: flex-start;
   padding: clamp(10px, 1.5vw, 16px);
   background: rgba(255,255,255,0.02);
-  min-height: 90px; /* optional: ensures consistent look */
+  min-height: 90px;
 }
+.title { font-size: clamp(13px, 1.3vw, 16px); font-weight: 600; margin-bottom: 4px; color: floralwhite; }
+.card-info .desc { font-size: clamp(11px, 1vw, 14px); color: #fcfcfc; margin-bottom: 4px; line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+.sub { font-size: clamp(10px, 1vw, 13px); color: #000; }
 
-.title {
-  font-size: clamp(13px, 1.3vw, 16px);
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: floralwhite;
-}
-
-.sub {
-  font-size: clamp(10px, 1vw, 13px);
-  color: #000000;
-}
-
-/* ===== Modal + Animation ===== */
+/* ============================
+   MODAL OVERLAY (Glass Effect)
+   ============================ */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2,8,20,0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,14 +122,19 @@ h1, h2, .title {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
+  background: rgba(10, 12, 20, 0.45);            /* subtle dark tint */
+  backdrop-filter: blur(8px) saturate(110%);     /* modern glass blur */
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
 }
-
 .modal-overlay.open {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* Smooth animation for modal box */
+/* ============================
+   MODAL CONTAINER (Flex Layout)
+   50% Image | 50% Recipe Content
+   ============================ */
 .modal {
   transform: scale(0.95);
   opacity: 0;
@@ -156,181 +142,188 @@ h1, h2, .title {
   width: 100%;
   max-width: min(960px, 90vw);
   max-height: 90vh;
-  background: linear-gradient(180deg,#f4b224 0%, #750298 100%);
-  background-clip: padding-box; /* ✅ prevents gradient touching the border edge */
+  height: 90vh;                        /* Ensures full modal height is used */
+  background: #553b36;
+  background-clip: border-box;         /* Prevents gradient edge line */
   border-radius: 12px;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-  display: grid;
-  grid-template-columns: 1fr clamp(300px, 35vw, 400px);
-  gap: 0; /* reduce gap to avoid edge exposure */
-  padding: 0; /* prevents visible lines */
-  border: 1px solid rgba(255,255,255,0.03);
-  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;                    /* Clips child content cleanly */
+  display: flex;                       /* 🎯 Replaces grid for consistent 50/50 layout */
 }
-
 .modal-overlay.open .modal {
   transform: scale(1);
   opacity: 1;
 }
 
-/* Fade-in recipe text */
-.modal-overlay.open .recipe {
-  animation: fadeIn 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive modal layout */
-@media (max-width: 880px) {
-  .modal {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* ============================
+   IMAGE SECTION (Left Pane)
+   ============================ */
 .img-wrap {
-  position: sticky;
-  top: 0;
-  overflow: hidden;
-  background: #000;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+  flex: 1 1 50%;           /* Ensures 50% width */
+  position: relative;      /* ⚠️ Required for arrows to position correctly */
   height: 100%;
-  max-height: 90vh; /* This keeps the image fixed vertically */
+  overflow: hidden;
 }
-
-.modal .img-wrap img {
+.img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;       /* Keeps entire image visible and cropped evenly */
   display: block;
 }
 
-/* === Arrows on image edges === */
+/* ============================
+   CAROUSEL ARROWS (Inside Image)
+   ============================ */
 .modal-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 42px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.35);
   width: 48px;
   height: 48px;
-  display: flex;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 32px;              /* Ensures icon is properly sized */
+  line-height: 1;              /* Centers icon vertically */
+  display: flex;               /* ✅ Perfect centering */
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   cursor: pointer;
   user-select: none;
-  z-index: 5;
-  transition: background 0.2s ease, opacity 0.25s ease;
-  opacity: 0;
+  opacity: 0;                  /* Hidden by default */
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
-
 .img-wrap:hover .modal-arrow {
-  opacity: 1;
+  opacity: 1;                 /* Fade in only when hovering over image */
 }
-
 .modal-arrow:hover {
-  background: rgba(0, 0, 0, 0.55);
+  transform: translateY(-50%) scale(1.08);   /* Smooth hover scale */
+  background: rgba(0, 0, 0, 0.55);           /* Darker on hover */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);    /* Soft glow effect */
 }
-
 .modal-arrow.left {
-  left: 0; /* sits exactly at left image edge */
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  left: 16px;
 }
-
 .modal-arrow.right {
-  right: 0; /* sits exactly at right image edge */
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  right: 16px;
 }
 
-/* ===== Recipe Section (right) ===== */
+/* ============================
+   RECIPE PANEL (Right Pane)
+   Scrollable Content Area
+   ============================ */
 .recipe {
-  box-shadow: inset 0 8px 8px -8px rgba(0,0,0,0.4), inset 0 -8px 8px -8px rgba(0,0,0,0.4);
+  flex: 1 1 50%;             /* Matches image width */
   position: relative;
-  color: var(--text);
-  padding: clamp(20px, 2.5vw, 30px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ✅ make content start at the top */
-  background: rgba(255,255,255,0.02);
+  height: 100%;
+  padding: clamp(18px, 2vw, 28px);
+  color: var(--text);
+  overflow: hidden;          /* Only the inner content should scroll */
   text-align: left;
+}
+
+/* Scrollable content wrapper */
+.recipe-content {
+  flex: 1 1 auto;           /* Take remaining height */
+  min-height: 0;            /* ✅ Critical for scroll to work */
   overflow-y: auto;
-  max-height: 90vh; 
-  padding-right: 12px;
+  padding-right: 8px;       /* Prevent scrollbar overlap */
   -webkit-overflow-scrolling: touch;
 }
 
-.recipe h2 {
-  margin: 0 0 10px 0;
-  font-size: clamp(18px, 1.6vw, 22px);
-}
-
-.section-title {
-  color: #2a0949;
-  font-family: 'Sawarabi Mincho', serif;
-  font-size: 14px;
-}
-
-.ingredients ul,
-.steps ol {
-  margin: 6px 0 0 18px;
-  color: #dfeaf7;
-}
-
-
-.locations ul {
-  margin: 6px 0 0 18px;
-  color: #dfeaf7;
-  list-style: disc;
-}
-
-.location-link {
-  font-size: 12px;
-  color: var(--accent);
-  text-decoration: underline;
-  cursor: pointer;
-}
-.location-link:hover {
-  opacity: 0.8;
-}
-
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-/* ===== Close Button ===== */
+/* ============================
+   CLOSE BUTTON (Blurred Modern Style)
+   ============================ */
 .close-btn {
   position: absolute;
-  right: 12px;
-  top: 12px;
-  background: transparent;
-  border: none;
-  color: #cfe6f7;
-  font-size: 20px;
-  cursor: pointer;
+  top: 25px;                     /* Inside padding zone */
+  right: 50px;
   z-index: 10;
-  transition: color 0.2s ease;
+  background: rgba(0,0,0,0.3);   /* Transparent blurred background */
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
-
 .close-btn:hover {
+  background: rgba(0,0,0,0.5);
   color: var(--accent);
+  transform: scale(1.05);
 }
 
-/* Responsive padding */
+/* ===============================
+   FADE SHADOWS FOR SCROLL INDICATION
+   (JS toggles opacity)
+   =============================== */
+.scroll-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18px;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+  opacity: var(--fade-top-opacity);
+}
+.fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+  opacity: var(--fade-bottom-opacity);
+}
+
+
+/* Default colors */
+.location-link.website-link {
+  color: #EFA8B8;  /* Sakura Pink */
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.1s ease;
+}
+
+.location-link.map-link {
+  color: #A3D5FF;  /* Water Blue */
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.1s ease;
+}
+
+/* Shared hover & focus state */
+.location-link:hover,
+.location-link:focus {
+  color: #ff8c00;  /* Kurenai Crimson */
+  text-decoration: underline;
+}
+
+/* ============================
+   RESPONSIVE (Mobile Stacked)
+   ============================ */
 @media (max-width: 880px) {
   .modal {
-    grid-template-columns: 1fr;
-    padding-bottom: 22px;
+    flex-direction: column;
+    height: 90vh;
+  }
+  .img-wrap {
+    flex: 0 0 auto;
+    height: 40vh;              /* Allocate top section */
   }
   .recipe {
-    padding-left: 6px;
-    padding-right: 6px;
+    flex: 1 1 auto;            /* Recipe takes remaining space */
+  }
+  .recipe-content {
+    overflow-y: auto;
   }
 }
