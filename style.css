@@ -11,28 +11,42 @@
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg, #081221 0%, #071020 100%);
-  color: var(--text);
-  padding: 28px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-image: url('patterns/pexels-eva-bronzini-5761962.jpg');
+  background-size: cover;      /* Makes it fill the screen while preserving aspect ratio */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed;/* Keeps it fixed on scroll (parallax effect) */
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
 }
 
 body.modal-open {
   overflow: hidden;
 }
 
-h1 {
-  margin: 0 0 18px 0;
-  font-size: 22px;
-  letter-spacing: 0.2px;
+h1, h2, .title {
+  font-family: 'Sawarabi Mincho', serif;
+  color: #ffffff; /* Vermilion red */
+  letter-spacing: 1px;
 }
 
-p.lead {
-  margin: 6px 0 20px 0;
-  color: #a8bbd0;
+.hero {
+  text-align: center;
+  padding: 40px 0 20px;
+
 }
+
+.subtitle {
+  font-size: 16px;
+  color: #ffffff;
+  margin-top: 8px;
+  font-style: italic;
+  background-color: #f99b2fb8;
+  display: inline-block; /* ✅ makes background wrap only the text */
+  padding: 4px 8px;      /* (optional) for nicer spacing around the text */
+  border-radius: 4px;    /* (optional) for a softer, elegant appearance */
+}
+
 
 /* ===== Grid Layout ===== */
 .grid {
@@ -44,10 +58,11 @@ p.lead {
 
 /* ===== Cards ===== */
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03));
+  background: rgba(255, 149, 0, 0.6);  
   border-radius: var(--card-radius);
+  border: 1px solid rgba(0,0,0,0.05);
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
   display: flex;
@@ -57,13 +72,13 @@ p.lead {
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(2,6,23,0.7);
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
 }
 
 .card-info .desc {
   font-size: clamp(11px, 1vw, 14px);
-  color: #cfd7e1;
+  color: #fcfcfc;
   margin-bottom: 4px;
   line-height: 1.2;
   display: -webkit-box;
@@ -79,6 +94,7 @@ p.lead {
   overflow: hidden;
   position: relative;
   background: #111;
+  border-radius: 4px;
 }
 
 .thumb img {
@@ -109,7 +125,7 @@ p.lead {
 
 .sub {
   font-size: clamp(10px, 1vw, 13px);
-  color: #93a6c0;
+  color: #000000;
 }
 
 /* ===== Modal + Animation ===== */
@@ -140,14 +156,14 @@ p.lead {
   width: 100%;
   max-width: min(960px, 90vw);
   max-height: 90vh;
-  background: linear-gradient(180deg,#071224 0%, #071725 100%);
+  background: linear-gradient(180deg,#f4b224 0%, #750298 100%);
+  background-clip: padding-box; /* ✅ prevents gradient touching the border edge */
   border-radius: 12px;
-  overflow: auto;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6);
   display: grid;
   grid-template-columns: 1fr clamp(300px, 35vw, 400px);
-  gap: 18px;
-  padding: clamp(14px, 2vw, 20px);
+  gap: 0; /* reduce gap to avoid edge exposure */
+  padding: 0; /* prevents visible lines */
   border: 1px solid rgba(255,255,255,0.03);
   overflow: hidden;
 }
@@ -256,10 +272,9 @@ p.lead {
 }
 
 .section-title {
-  margin: 14px 0 6px 0;
-  font-size: 13px;
-  color: #b6c7db;
-  font-weight: 700;
+  color: #2a0949;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 14px;
 }
 
 .ingredients ul,
