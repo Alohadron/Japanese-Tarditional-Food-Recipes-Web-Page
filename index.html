@@ -7,14 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Food gallery — click an image to view the recipe</h1>
-  <p class="lead">10 delicious dishes. Click any card to open the recipe. Use Esc to close.</p>
+ 
+  <header class="hero">
+    <h1>日本の味覚</h1>
+    <p class="subtitle">Discover the art, harmony, and authentic tastes of Japanese cuisine</p>
+  </header>
 
   <div class="grid" id="gallery" aria-live="polite"></div>
 
   <!-- Modal -->
-  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal" role="document">
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       
       <!-- Image carousel -->
       <div class="img-wrap" id="modalImageWrap">
@@ -44,12 +47,10 @@
             <h3>Watch how it's made:</h3>
             <div id="videoFrameWrap"></div>
           </div>
-        </div>
-        
-        <!-- Buttons pinned at bottom -->
-        <div class="modal-actions">
-          <button class="btn" id="printBtn">Print</button>
-          <button class="btn primary" id="saveBtn">Save to device</button>
+          <div class="locations" id="modalLocations">
+            <div class="section-title">Where to Try It</div>
+            <ul id="modalLocationsList"></ul>
+          </div>
         </div>
       </div>
       

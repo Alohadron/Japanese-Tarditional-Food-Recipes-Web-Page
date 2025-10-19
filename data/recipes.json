@@ -26,6 +26,26 @@
       "Add slices of fish and vegetables.",
       "Roll tightly and slice into pieces.",
       "Serve with soy sauce and wasabi."
+    ],
+    "locations": [
+      {
+        "name": "Nori",
+        "address": "Str. Alba-Iulia 21, Chișinău",
+        "website": "https://norisushi.md",
+        "link": "https://www.google.com/maps/place/Nori+Sushi+Buiucani/@47.0338812,28.7757005,17z/data=!3m1!4b1!4m6!3m5!1s0x40c97d7b121517b1:0x7b2769421b542079!8m2!3d47.0338812!4d28.7782754!16s%2Fg%2F11kc2w1rx6?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "name": "San Sushi",
+        "address": "Strada Cuza Vodă 5/5, Chișinău",
+        "website": "https://sansushi.md/en",
+        "link": "https://www.google.com/maps/place/San+Sushi/@46.9868741,28.8658012,17z/data=!4m14!1m7!3m6!1s0x40c9794e352ae457:0x91211fe998455d7d!2zNSwgU3RyYWRhIEN1emEgVm9kxIMgNSwgQ2hpyJlpbsSDdSwgTW9sZG92YQ!3b1!8m2!3d46.9868741!4d28.8683761!3m5!1s0x40c97931a3673565:0x83daf936f050ffed!8m2!3d46.9864885!4d28.8683355!16s%2Fg%2F11b7gq4lgx?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "name": "Vasabi",
+        "address": "Bulevardul Dacia 4/1, Chișinău",
+        "website": "https://vasabi.md",
+        "link": "https://www.google.com/maps/place/Vasabi/@46.9923577,28.8451002,17z/data=!4m9!1m2!2m1!1zQnVsZXZhcmR1bCBEYWNpYSA0LzEsIENoaciZaW7Eg3U!3m5!1s0x40c97eb03aff5e65:0x75946974c9bd87aa!8m2!3d46.9931381!4d28.8473069!16s%2Fg%2F11c4bffzhz?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+      }
     ]
   },
   {
