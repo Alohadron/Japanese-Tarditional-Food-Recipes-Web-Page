@@ -8,62 +8,77 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
+  <!-- Header / Hero -->
   <header class="hero">
-    <h1>日本の味覚</h1>
-    <p class="subtitle">Discover the art, harmony, and authentic tastes of Japanese cuisine</p>
+    <h1 data-ui="header.title">日本の味覚</h1>
+    <p class="subtitle" data-ui="header.subtitle">
+      Discover the art, harmony, and authentic tastes of Japanese cuisine
+    </p>
+
+    <div class="language-switcher">
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="ro">Română</option>
+        <option value="ru">Русский</option>
+      </select>
+    </div>
   </header>
 
+  <!-- Gallery Grid -->
   <div class="grid" id="gallery" aria-live="polite"></div>
 
   <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      
-      <!-- Image (left on desktop, top on mobile) -->
+
+      <!-- Image Section -->
       <div class="img-wrap" id="modalImageWrap">
-        <img id="modalImage" alt="Large food image">
+        <img id="modalImage" alt="">
       </div>
-    
-      <!-- Recipe (scrollable content) -->
+
+      <!-- Recipe Section -->
       <div class="recipe" id="modalRecipe">
-        <button class="close-btn" id="closeBtn" aria-label="Close recipe">✕</button>
-        
-        <!-- Scrollable content wrapper -->
+        <button class="close-btn" id="closeBtn" aria-label="Close" data-ui="modal.close">✕</button>
+
         <div class="recipe-content" id="recipeContent">
+          <!-- Title from JSON -->
           <h2 id="modalTitle">Recipe Title</h2>
-        
+          <!-- Description (new) -->
+          <p id="modalDesc"></p>
+
+          <!-- Ingredients -->
           <div class="ingredients">
-            <div class="section-title">Ingredients</div>
+            <div class="section-title" data-ui="modal.ingredients">Ingredients</div>
             <ul id="modalIngredients"></ul>
           </div>
-        
+
+          <!-- Steps -->
           <div class="steps">
-            <div class="section-title">Steps</div>
+            <div class="section-title" data-ui="modal.steps">Steps</div>
             <ol id="modalSteps"></ol>
           </div>
-        
-          <!-- YouTube Video -->
+
+          <!-- Video Section -->
           <div id="videoContainer" class="video-container" style="margin-top: 14px; display: none;">
-            <h3>Watch how it's made:</h3>
+            <h3 data-ui="modal.watchVideo">Watch how it's made:</h3>
             <div id="videoFrameWrap"></div>
           </div>
 
-          <!-- Optional locations list -->
+          <!-- Locations -->
           <div class="locations" id="modalLocations">
-            <div class="section-title">Where to Try It</div>
+            <div class="section-title" data-ui="modal.locations">Where to Try It</div>
             <ul id="modalLocationsList"></ul>
           </div>
         </div>
 
-        <!-- gradient shadows (decorative, JS toggles visibility) -->
+        <!-- Scroll Indicators -->
         <div class="scroll-fade fade-top" aria-hidden="true"></div>
         <div class="scroll-fade fade-bottom" aria-hidden="true"></div>
       </div>
-      
+
     </div>
   </div>
 

@@ -6,48 +6,25 @@
 let recipes = [];
 let lastFocusedCard = null; // remember last clicked card to restore focus
 
-// Render gallery cards
-function renderGallery() {
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = ''; // clear
+// ✅ Default language (fallback)
+let currentLang = localStorage.getItem('language') || 'en';
 
-  recipes.forEach((r) => {
-    const card = document.createElement('button');
-    card.className = 'card';
-    card.setAttribute('data-id', r.id);
-    card.setAttribute('aria-label', `Open recipe for ${r.title}`);
+// ✅ Get the dropdown element
+const languageSelect = document.getElementById('language-select');
 
-    const thumb = document.createElement('div');
-    thumb.className = 'thumb';
+// ✅ Set the dropdown to the saved language when the page loads
+languageSelect.value = currentLang;
 
-    const img = document.createElement('img');
-    const firstImage = Array.isArray(r.images) && r.images.length ? r.images[0] : r.image;
-    img.src = firstImage;
-    img.alt = r.alt || r.title;
-    img.loading = 'lazy';
-    thumb.appendChild(img);
+// ✅ Language change event (only once!)
+languageSelect.addEventListener('change', (event) => {
+  currentLang = event.target.value;
+  localStorage.setItem('language', currentLang);
+  console.log("Language changed to:", currentLang);
 
-    const info = document.createElement('div');
-    info.className = 'card-info';
-    info.innerHTML = `
-      <div style="flex:1">
-        <div class="title">${r.title}</div>
-        <div class="desc">${r.description || ''}</div>
-        <div class="sub">Click to view recipe</div>
-      </div>
-    `;
+  renderRecipes();  // Rerender recipe cards
+  updateUI();       // Update UI sections
+});
 
-    card.appendChild(thumb);
-    card.appendChild(info);
-
-    card.addEventListener('click', () => {
-      lastFocusedCard = card;
-      openModal(r.id);
-    });
-
-    gallery.appendChild(card);
-  });
-}
 
 // ---------- Modal refs ----------
 const overlay = document.getElementById('modalOverlay');
@@ -67,6 +44,51 @@ const modalLocationsList = document.getElementById('modalLocationsList');
 // Scroll fades
 const fadeTop = document.querySelector('.fade-top');
 const fadeBottom = document.querySelector('.fade-bottom');
+
+const modalDesc = document.getElementById('modalDesc');
+
+const uiText = {
+  header: {
+    title: {
+      en: "日本の味覚",
+      ro: "Gusturile Japoniei",
+      ru: "Вкусы Японии"
+    },
+    subtitle: {
+      en: "Discover the art, harmony, and authentic tastes of Japanese cuisine",
+      ro: "Descoperă arta, armonia și gusturile autentice ale bucătăriei japoneze",
+      ru: "Откройте искусство, гармонию и подлинные вкусы японской кухни"
+    }
+  },
+  modal: {
+    close: {
+      en: "✕",
+      ro: "✕",
+      ru: "✕"
+    },
+    ingredients: {
+      en: "Ingredients",
+      ro: "Ingrediente",
+      ru: "Ингредиенты"
+    },
+    steps: {
+      en: "Steps",
+      ro: "Pași",
+      ru: "Шаги"
+    },
+    watchVideo: {
+      en: "Watch how it's made:",
+      ro: "Vezi cum se prepară:",
+      ru: "Смотрите, как это готовится:"
+    },
+    locations: {
+      en: "Where to Try It",
+      ro: "Unde Poți Gusta",
+      ru: "Где Попробовать"
+    }
+  }
+};
+
 
 // ---------- Helpers ----------
 function toEmbedUrl(url) {
@@ -110,21 +132,29 @@ function clearImageArrows() {
   modalImageWrap.querySelectorAll('.modal-arrow').forEach((el) => el.remove());
 }
 
-// ---------- Modal open / close ----------
 function openModal(id) {
   const recipe = recipes.find((x) => x.id === id);
   if (!recipe) return;
 
-  // Reset & image handling
+  // ✅ Get content in the current language
+  const title = recipe.title?.[currentLang] || recipe.title?.en || "";
+  const description = recipe.description?.[currentLang] || recipe.description?.en || "";
+  const ingredients = recipe.ingredients?.[currentLang] || [];
+  const steps = recipe.steps?.[currentLang] || [];
+  const locations = recipe.locations || []; // locations usually language-neutral
+  const altText = recipe.alt?.[currentLang] || title;
+
+
+
+  // ---------- Image Carousel ----------
   clearImageArrows();
 
   const imgs = recipe.images && recipe.images.length ? recipe.images : [recipe.image];
   let currentImageIndex = 0;
 
   modalImage.src = imgs[currentImageIndex];
-  modalImage.alt = recipe.alt || recipe.title;
+  modalImage.alt = altText;
 
-  // Add arrows only if multiple images
   if (imgs.length > 1) {
     const leftArrow = document.createElement('div');
     leftArrow.className = 'modal-arrow left';
@@ -137,6 +167,7 @@ function openModal(id) {
     const go = (dir) => {
       currentImageIndex = (currentImageIndex + dir + imgs.length) % imgs.length;
       modalImage.src = imgs[currentImageIndex];
+      modalImage.alt = altText;
     };
 
     leftArrow.addEventListener('click', (e) => {
@@ -148,29 +179,32 @@ function openModal(id) {
       go(1);
     });
 
-    // Important: arrows must be children of img-wrap so they stay within image bounds
     modalImageWrap.appendChild(leftArrow);
     modalImageWrap.appendChild(rightArrow);
   }
 
-  // Populate right column
-  modalTitle.textContent = recipe.title;
+  // ---------- Populate Right Column ----------
+  // Title & description
+  modalTitle.textContent = title;
+  modalDesc.textContent = description;
 
+  // Ingredients
   modalIngredients.innerHTML = '';
-  (recipe.ingredients || []).forEach((ing) => {
+  ingredients.forEach((ing) => {
     const li = document.createElement('li');
     li.textContent = ing;
     modalIngredients.appendChild(li);
   });
 
+  // Steps
   modalSteps.innerHTML = '';
-  (recipe.steps || []).forEach((st) => {
+  steps.forEach((st) => {
     const li = document.createElement('li');
     li.textContent = st;
     modalSteps.appendChild(li);
   });
 
-  // Video (optional)
+  // ---------- Video section ----------
   videoFrameWrap.innerHTML = '';
   if (recipe.video) {
     const embedUrl = toEmbedUrl(recipe.video);
@@ -192,38 +226,36 @@ function openModal(id) {
     videoContainer.style.display = 'none';
   }
 
-  // Locations (optional)
+  // ---------- Locations section ----------
   if (modalLocationsList) {
     modalLocationsList.innerHTML = '';
-    if (recipe.locations && recipe.locations.length) {
-      recipe.locations.forEach((place) => {
+    if (locations.length) {
+      locations.forEach((place) => {
         const li = document.createElement('li');
         li.innerHTML = `
           <strong>${place.name}</strong><br>
           <span>${place.address || 'Address not available'}</span><br>
-          ${place.website ? `<a href="${place.website}" target="_blank" class="location-link website-link">Visit Website</a><br>` : ''}
-          ${place.link ? `<a href="${place.link}" target="_blank" class="location-link map-link">View on Map</a>` : ''}
-
+          ${place.website ? `<a href="${place.website}" target="_blank" class="location-link website-link">${currentLang === 'en' ? 'Visit Website' : currentLang === 'ro' ? 'Vizitează site-ul' : 'Посетить сайт'}</a><br>` : ''}
+          ${place.link ? `<a href="${place.link}" target="_blank" class="location-link map-link">${currentLang === 'en' ? 'View on Map' : currentLang === 'ro' ? 'Vezi pe hartă' : 'Посмотреть на карте'}</a>` : ''}
         `;
         modalLocationsList.appendChild(li);
       });
     } else {
-      modalLocationsList.innerHTML = '<li>No restaurant data available.</li>';
+      modalLocationsList.innerHTML = `<li>${currentLang === 'en' ? 'No restaurant data available.' : currentLang === 'ro' ? 'Nu sunt date disponibile.' : 'Нет данных о ресторанах.'}</li>`;
     }
   }
 
-  // Show modal
+  // ---------- Show modal ----------
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden', 'false');
   document.body.classList.add('modal-open');
 
-  // Focus management
   closeBtn?.focus();
 
-  // Init scroll fades on right column
   attachScrollFadeListeners();
   updateScrollFades();
 }
+
 
 function closeModal() {
   overlay.classList.remove('open');
@@ -278,7 +310,8 @@ fetch('data/recipes.json')
   .then((r) => (r.ok ? r.json() : Promise.reject(r)))
   .then((data) => {
     recipes = data;
-    renderGallery();
+    renderRecipes();  
+    updateUI();
   })
   .catch((err) => {
     console.error('Error loading recipes:', err);
@@ -289,4 +322,58 @@ fetch('data/recipes.json')
     </div>`;
   });
 
-  
+
+// ✅ Render recipe cards dynamically
+function renderRecipes() {
+  const container = document.querySelector('.grid');
+  container.innerHTML = ''; // Clear old recipes
+
+  recipes.forEach(recipe => {
+    const card = document.createElement('button');
+    card.className = 'card';
+    card.setAttribute('data-id', recipe.id);
+    card.setAttribute('aria-label', recipe.title[currentLang] || "");
+    card.type = "button";
+
+    card.innerHTML = `
+      <div class="thumb">
+        <img src="${recipe.images[0]}" 
+             alt="${recipe.alt?.[currentLang] || recipe.title[currentLang]}" 
+             decoding="async" 
+             loading="lazy">
+      </div>
+      <div class="card-info">
+        <div class="title">${recipe.title[currentLang]}</div>
+        <div class="desc">${recipe.description[currentLang]}</div>
+        <div class="sub">
+          ${currentLang === 'en' ? 'Click to view' : currentLang === 'ro' ? 'Apasă pentru a vedea' : 'Нажмите для просмотра'}
+        </div>
+      </div>
+    `;
+
+    // ✅ Add click event for modal
+    // ✅ Add click event for modal + remember last focused card
+    card.addEventListener('click', () => {
+      lastFocusedCard = card; // ✅ this stores which card opened the modal
+      openModal(recipe.id);   // ✅ this opens the modal as before
+    });
+
+    container.appendChild(card);
+  });
+}
+
+// ✅ Update non-recipe UI elements (titles, modal labels, etc.)
+function updateUI() {
+  document.querySelectorAll('[data-ui]').forEach(el => {
+    const keyPath = el.getAttribute('data-ui').split('.');
+    let textObj = uiText;
+
+    keyPath.forEach(key => {
+      if (textObj[key]) textObj = textObj[key];
+    });
+
+    if (textObj[currentLang]) {
+      el.textContent = textObj[currentLang];
+    }
+  });
+}

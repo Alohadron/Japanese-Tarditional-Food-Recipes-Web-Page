@@ -1,17 +1,30 @@
 
 [
-  {
-    "id": "sushi",
-    "title": "🍣 Sushi",
-    "description": "Sushi Vinegared rice paired with fresh fish, vegetables, or egg — Japan’s iconic bite-sized delicacy known for its balance and simplicity.",
-    "images": [
-      "images/sushi/sushi1.jpg",
-      "images/sushi/sushi2.jpg",
-      "images/sushi/sushi3.jpg"
-    ],
-    "video": "https://www.youtube.com/watch?v=nIoOv6lWYnk",
-    "alt": "Assorted sushi rolls",
-    "ingredients": [
+{
+  "id": "sushi",
+  "title": {
+    "en": "🍣 Sushi",
+    "ro": "🍣 Sushi",
+    "ru": "🍣 Суши"
+  },
+  "description": {
+    "en": "Vinegared rice paired with fresh fish, vegetables, or egg — Japan’s iconic bite-sized delicacy known for its balance and simplicity.",
+    "ro": "Orez cu oțet servit cu pește proaspăt, legume sau ou — delicatesea emblematică a Japoniei, cunoscută pentru echilibrul și simplitatea sa.",
+    "ru": "Рис с уксусом в сочетании со свежей рыбой, овощами или яйцом — культовое японское блюдо, известное своим балансом и простотой."
+  },
+  "images": [
+    "images/sushi/sushi1.jpg",
+    "images/sushi/sushi2.jpg",
+    "images/sushi/sushi3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=nIoOv6lWYnk",
+  "alt": {
+    "en": "Assorted sushi rolls with fish and vegetables",
+    "ro": "Sushi asortat cu pește și legume",
+    "ru": "Ассорти суши с рыбой и овощами"
+  },
+  "ingredients": {
+    "en": [
       "Sushi rice",
       "Nori (seaweed) sheets",
       "Fresh fish (salmon, tuna)",
@@ -19,47 +32,95 @@
       "Soy sauce",
       "Wasabi"
     ],
-    "steps": [
-      "Prepare sushi rice and let it cool.",
-      "Place a nori sheet on a bamboo mat.",
-      "Spread a thin layer of rice on the nori.",
-      "Add slices of fish and vegetables.",
-      "Roll tightly and slice into pieces.",
-      "Serve with soy sauce and wasabi."
+    "ro": [
+      "Orez pentru sushi",
+      "Foi de nori",
+      "Pește proaspăt (somon, ton)",
+      "Legume (castravete, avocado)",
+      "Sos de soia",
+      "Wasabi"
     ],
-    "locations": [
-      {
-        "name": "Nori",
-        "address": "Str. Alba-Iulia 21, Chișinău",
-        "website": "https://norisushi.md",
-        "link": "https://www.google.com/maps/place/Nori+Sushi+Buiucani/@47.0338812,28.7757005,17z/data=!3m1!4b1!4m6!3m5!1s0x40c97d7b121517b1:0x7b2769421b542079!8m2!3d47.0338812!4d28.7782754!16s%2Fg%2F11kc2w1rx6?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
-      },
-      {
-        "name": "San Sushi",
-        "address": "Strada Cuza Vodă 5/5, Chișinău",
-        "website": "https://sansushi.md/en",
-        "link": "https://www.google.com/maps/place/San+Sushi/@46.9868741,28.8658012,17z/data=!4m14!1m7!3m6!1s0x40c9794e352ae457:0x91211fe998455d7d!2zNSwgU3RyYWRhIEN1emEgVm9kxIMgNSwgQ2hpyJlpbsSDdSwgTW9sZG92YQ!3b1!8m2!3d46.9868741!4d28.8683761!3m5!1s0x40c97931a3673565:0x83daf936f050ffed!8m2!3d46.9864885!4d28.8683355!16s%2Fg%2F11b7gq4lgx?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
-      },
-      {
-        "name": "Vasabi",
-        "address": "Bulevardul Dacia 4/1, Chișinău",
-        "website": "https://vasabi.md",
-        "link": "https://www.google.com/maps/place/Vasabi/@46.9923577,28.8451002,17z/data=!4m9!1m2!2m1!1zQnVsZXZhcmR1bCBEYWNpYSA0LzEsIENoaciZaW7Eg3U!3m5!1s0x40c97eb03aff5e65:0x75946974c9bd87aa!8m2!3d46.9931381!4d28.8473069!16s%2Fg%2F11c4bffzhz?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
-      }
+    "ru": [
+      "Рис для суши",
+      "Листы нори",
+      "Свежая рыба (лосось, тунец)",
+      "Овощи (огурец, авокадо)",
+      "Соевый соус",
+      "Васаби"
     ]
   },
-  {
-    "id": "udon",
-    "title": "🍜 Udon",
-    "description": "Thick, chewy wheat noodles served in a savory broth or chilled with dipping sauce — comforting and versatile year-round.",
-    "images": [
-      "images/udon/udon1.jpg",
-      "images/udon/udon2.jpg",
-      "images/udon/udon3.jpg"
+  "steps": {
+    "en": [
+      "Prepare sushi rice and let it cool to room temperature.",
+      "Place a sheet of nori on a bamboo sushi mat.",
+      "Spread a thin, even layer of rice over the nori.",
+      "Add slices of fish and vegetables of your choice.",
+      "Roll tightly using the mat and slice into bite-sized pieces.",
+      "Serve with soy sauce, wasabi, and pickled ginger."
     ],
-    "video" : "https://www.youtube.com/watch?v=dzdiyYCnPPI",
-    "alt": "Bowl of udon noodles",
-    "ingredients": [
+    "ro": [
+      "Prepară orezul pentru sushi și lasă-l să se răcească la temperatura camerei.",
+      "Așază o foaie de nori pe un covoraș de bambus.",
+      "Întinde un strat subțire și uniform de orez peste nori.",
+      "Adaugă felii de pește și legume după preferință.",
+      "Rulează strâns folosind covorașul și taie în bucăți mici.",
+      "Servește cu sos de soia, wasabi și ghimbir murat."
+    ],
+    "ru": [
+      "Приготовьте рис для суши и остудите до комнатной температуры.",
+      "Положите лист нори на бамбуковый коврик.",
+      "Равномерно распределите тонкий слой риса по нори.",
+      "Добавьте ломтики рыбы и овощи по вкусу.",
+      "Плотно сверните с помощью коврика и нарежьте на порционные кусочки.",
+      "Подавайте с соевым соусом, васаби и маринованным имбирём."
+    ]
+  },
+  "locations": [
+    {
+      "name": "Nori",
+      "address": "Str. Alba-Iulia 21, Chișinău",
+      "website": "https://norisushi.md",
+      "link": "https://www.google.com/maps/place/Nori+Sushi+Buiucani/@47.0338812,28.7757005,17z/data=!3m1!4b1!4m6!3m5!1s0x40c97d7b121517b1:0x7b2769421b542079!8m2!3d47.0338812!4d28.7782754!16s%2Fg%2F11kc2w1rx6?entry=ttu"
+    },
+    {
+      "name": "San Sushi",
+      "address": "Strada Cuza Vodă 5/5, Chișinău",
+      "website": "https://sansushi.md/en",
+      "link": "https://www.google.com/maps/place/San+Sushi/@46.9868741,28.8658012,17z"
+    },
+    {
+      "name": "Vasabi",
+      "address": "Bulevardul Dacia 4/1, Chișinău",
+      "website": "https://vasabi.md",
+      "link": "https://www.google.com/maps/place/Vasabi/@46.9923577,28.8451002,17z"
+    }
+  ]
+},
+{
+  "id": "udon",
+  "title": {
+    "en": "🍜 Udon",
+    "ro": "🍜 Udon",
+    "ru": "🍜 Удон"
+  },
+  "description": {
+    "en": "Thick, chewy wheat noodles served in a savory broth or chilled with dipping sauce — comforting and versatile year-round.",
+    "ro": "Tăiței groși și elastici din grâu, serviți într-un bulion savuros sau reci cu sos de dipping — reconfortanți și versatili tot timpul anului.",
+    "ru": "Толстая и упругая пшеничная лапша, подаваемая в пряном бульоне или охлажденной с соусом — утешительное и универсальное блюдо круглый год."
+  },
+  "images": [
+    "images/udon/udon1.jpg",
+    "images/udon/udon2.jpg",
+    "images/udon/udon3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=dzdiyYCnPPI",
+  "alt": {
+    "en": "Bowl of udon noodles in savory broth",
+    "ro": "Bol cu tăiței udon în bulion savuros",
+    "ru": "Миска лапши удон в пряном бульоне"
+  },
+  "ingredients": {
+    "en": [
       "Udon noodles",
       "Dashi broth",
       "Soy sauce",
@@ -67,25 +128,69 @@
       "Green onions",
       "Tempura flakes"
     ],
-    "steps": [
-      "Cook udon noodles according to package instructions.",
-      "In a pot, combine dashi broth, soy sauce, and mirin.",
-      "Bring to a simmer and add cooked noodles.",
-      "Serve hot, garnished with green onions and tempura flakes."
+    "ro": [
+      "Tăiței udon",
+      "Supă dashi",
+      "Sos de soia",
+      "Mirin",
+      "Ceapă verde",
+      "Fulgi de tempura"
+    ],
+    "ru": [
+      "Лапша удон",
+      "Бульон даси",
+      "Соевый соус",
+      "Мирин",
+      "Зелёный лук",
+      "Хлопья темпуры"
     ]
   },
-  {
-    "id": "tofu",
-    "title": "🍢 Tofu",
-    "description": "Soft soy curd with a delicate flavor that absorbs seasonings beautifully, often used in soups, stir-fries, and healthy dishes.",
-    "images": [
-      "images/tofu/tofu1.jpg",
-      "images/tofu/tofu2.jpg",
-      "images/tofu/tofu3.jpg"
+  "steps": {
+    "en": [
+      "Cook udon noodles according to package instructions.",
+      "Combine dashi broth, soy sauce, and mirin in a pot and bring to a simmer.",
+      "Add the cooked noodles to the broth and heat through.",
+      "Serve hot, garnished with green onions and tempura flakes."
     ],
-    "video": "https://www.youtube.com/shorts/PUJAMVo3pbI",
-    "alt": "Grilled tofu slices",
-    "ingredients": [
+    "ro": [
+      "Gătește tăițeii udon conform instrucțiunilor de pe ambalaj.",
+      "Combină supa dashi, sosul de soia și mirinul într-o oală și adu la fierbere.",
+      "Adaugă tăițeii gătiți în bulion și lasă-i să se încălzească.",
+      "Servește fierbinte, garnisit cu ceapă verde și fulgi de tempura."
+    ],
+    "ru": [
+      "Приготовьте лапшу удон согласно инструкции на упаковке.",
+      "Смешайте бульон даси, соевый соус и мирин в кастрюле и доведите до лёгкого кипения.",
+      "Добавьте готовую лапшу в бульон и прогрейте.",
+      "Подавайте горячим, украсив зелёным луком и хлопьями темпуры."
+    ]
+  }
+},
+{
+  "id": "tofu",
+  "title": {
+    "en": "🍢 Tofu",
+    "ro": "🍢 Tofu",
+    "ru": "🍢 Тофу"
+  },
+  "description": {
+    "en": "Soft soy curd with a delicate flavor that absorbs seasonings beautifully, often used in soups, stir-fries, and healthy dishes.",
+    "ro": "Brânză de soia cu textură fină și gust delicat, care absoarbe perfect aromele — folosită adesea în supe, stir-fry și preparate sănătoase.",
+    "ru": "Нежное соевое творожистое изделие с мягким вкусом, отлично впитывающее приправы — часто используется в супах, жареных блюдах и полезных рецептах."
+  },
+  "images": [
+    "images/tofu/tofu1.jpg",
+    "images/tofu/tofu2.jpg",
+    "images/tofu/tofu3.jpg"
+  ],
+  "video": "https://www.youtube.com/shorts/PUJAMVo3pbI",
+  "alt": {
+    "en": "Grilled tofu slices garnished with green onions",
+    "ro": "Felii de tofu la grătar garnisite cu ceapă verde",
+    "ru": "Жареные ломтики тофу с зелёным луком"
+  },
+  "ingredients": {
+    "en": [
       "Firm tofu",
       "Soy sauce",
       "Sesame oil",
@@ -93,50 +198,136 @@
       "Ginger",
       "Green onions"
     ],
-    "steps": [
-      "Press tofu to remove excess moisture.",
-      "Cut into slices and marinate in soy sauce, sesame oil, garlic, and ginger.",
-      "Grill or pan-fry until golden brown.",
-      "Serve garnished with chopped green onions."
+    "ro": [
+      "Tofu ferm",
+      "Sos de soia",
+      "Ulei de susan",
+      "Usturoi",
+      "Ghimbir",
+      "Ceapă verde"
+    ],
+    "ru": [
+      "Плотный тофу",
+      "Соевый соус",
+      "Кунжутное масло",
+      "Чеснок",
+      "Имбирь",
+      "Зелёный лук"
     ]
   },
-  {
-    "id": "tempura",
-    "title": "🍤 Tempura",
-    "description": "Lightly battered and deep-fried seafood or vegetables, crisp on the outside and tender inside — best enjoyed with dipping sauce.",
-    "images": [
-      "images/tempura/1.jpg",
-      "images/tempura/2.jpg",
-      "images/tempura/3.jpg"
+  "steps": {
+    "en": [
+      "Press the tofu to remove excess moisture.",
+      "Cut into slices and marinate in soy sauce, sesame oil, garlic, and ginger.",
+      "Grill or pan-fry the tofu until golden brown on both sides.",
+      "Serve garnished with freshly chopped green onions."
     ],
-    "video": "https://www.youtube.com/watch?v=3qzhCVxCSoA",
-    "alt": "Assorted tempura vegetables and shrimp",
-    "ingredients": [
+    "ro": [
+      "Pressează tofu pentru a elimina excesul de lichid.",
+      "Taie în felii și marinează în sos de soia, ulei de susan, usturoi și ghimbir.",
+      "Gătește tofu pe grătar sau în tigaie până devine auriu pe ambele părți.",
+      "Servește garnisit cu ceapă verde tocată."
+    ],
+    "ru": [
+      "Отожмите тофу, чтобы удалить лишнюю влагу.",
+      "Нарежьте ломтиками и замаринуйте в соевом соусе, кунжутном масле, чесноке и имбире.",
+      "Обжарьте или приготовьте на гриле до золотистой корочки.",
+      "Подавайте, украсив нарезанным зелёным луком."
+    ]
+  }
+},
+{
+  "id": "tempura",
+  "title": {
+    "en": "🍤 Tempura",
+    "ro": "🍤 Tempura",
+    "ru": "🍤 Темпура"
+  },
+  "description": {
+    "en": "Lightly battered and deep-fried seafood or vegetables, crisp on the outside and tender inside — best enjoyed with dipping sauce.",
+    "ro": "Fructe de mare sau legume învelite într-un aluat ușor și prăjite — crocante la exterior și fragede în interior, servite cel mai bine cu sos de dipping.",
+    "ru": "Морепродукты или овощи в лёгком кляре, обжаренные во фритюре — хрустящие снаружи и нежные внутри, идеально сочетаются с соусом для макания."
+  },
+  "images": [
+    "images/tempura/1.jpg",
+    "images/tempura/2.jpg",
+    "images/tempura/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=3qzhCVxCSoA",
+  "alt": {
+    "en": "Assorted tempura shrimp and vegetables",
+    "ro": "Tempura asortată cu creveți și legume",
+    "ru": "Ассорти темпура с креветками и овощами"
+  },
+  "ingredients": {
+    "en": [
       "Shrimp",
       "Assorted vegetables (sweet potato, zucchini, bell pepper)",
       "Tempura batter mix",
       "Ice water",
       "Vegetable oil"
     ],
-    "steps": [
-      "Prepare tempura batter by mixing batter mix with ice water.",
-      "Heat vegetable oil in a deep pan.",
-      "Dip shrimp and vegetables into batter and fry until crispy.",
-      "Drain excess oil and serve hot."
+    "ro": [
+      "Creveți",
+      "Legume asortate (cartof dulce, dovlecel, ardei gras)",
+      "Mix pentru aluat tempura",
+      "Apă cu gheață",
+      "Ulei vegetal"
+    ],
+    "ru": [
+      "Креветки",
+      "Ассорти овощей (батат, кабачки, болгарский перец)",
+      "Смесь для кляра темпура",
+      "Ледяная вода",
+      "Растительное масло"
     ]
   },
-  {
-    "id": "yakitori",
-    "title": "🍡 Yakitori",
-    "description": "Grilled skewers of juicy chicken glazed with sweet-savory tare sauce, a popular Japanese street and izakaya favorite.",
-    "images": [
-      "images/yakitori/1.jpg",
-      "images/yakitori/2.jpg",
-      "images/yakitori/3.jpg"
+  "steps": {
+    "en": [
+      "Prepare the tempura batter by gently mixing the batter mix with ice-cold water.",
+      "Heat vegetable oil in a deep pan to frying temperature.",
+      "Dip shrimp and vegetables into the batter and fry until light golden and crispy.",
+      "Place on paper towels to drain excess oil, then serve immediately."
     ],
-    "video": "https://www.youtube.com/watch?v=uN_z5Fbj0RE",
-    "alt": "Grilled yakitori skewers",
-    "ingredients": [
+    "ro": [
+      "Prepară aluatul tempura amestecând ușor mixul de tempura cu apă foarte rece.",
+      "Încălzește ulei vegetal într-o tigaie adâncă până la temperatura de prăjire.",
+      "Înmoaie creveții și legumele în aluat și prăjește-le până devin aurii și crocante.",
+      "Așază-le pe șervețele de hârtie pentru a elimina excesul de ulei, apoi servește imediat."
+    ],
+    "ru": [
+      "Приготовьте кляр темпура, аккуратно смешав смесь с ледяной водой.",
+      "Разогрейте растительное масло в глубокой сковороде до температуры фритюра.",
+      "Обмакните креветки и овощи в кляр и обжаривайте до золотистой корочки.",
+      "Выложите на бумажные полотенца, чтобы удалить лишнее масло, и подавайте сразу."
+    ]
+  }
+},
+{
+  "id": "yakitori",
+  "title": {
+    "en": "🍡 Yakitori",
+    "ro": "🍡 Yakitori",
+    "ru": "🍡 Якитори"
+  },
+  "description": {
+    "en": "Grilled skewers of juicy chicken glazed with sweet-savory tare sauce, a popular Japanese street and izakaya favorite.",
+    "ro": "Frigărui japoneze cu pui suculent glazurat cu sos tare dulce-sărat, un preparat popular în izakaya și pe stradă.",
+    "ru": "Шашлычки из сочной курицы, покрытые сладко-солёным соусом тарэ — популярное блюдо японской уличной кухни и изакай."
+  },
+  "images": [
+    "images/yakitori/1.jpg",
+    "images/yakitori/2.jpg",
+    "images/yakitori/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=uN_z5Fbj0RE",
+  "alt": {
+    "en": "Grilled yakitori chicken skewers with sauce",
+    "ro": "Frigărui yakitori cu pui glazurat și sos",
+    "ru": "Жареные куриные шашлычки якидори с соусом"
+  },
+  "ingredients": {
+    "en": [
       "Chicken thighs",
       "Green onions",
       "Soy sauce",
@@ -144,26 +335,72 @@
       "Mirin",
       "Sugar"
     ],
-    "steps": [
-      "Cut chicken into bite-sized pieces.",
-      "Thread chicken and green onions onto skewers.",
-      "Combine soy sauce, sake, mirin, and sugar to make tare sauce.",
-      "Grill skewers, basting with tare sauce until cooked through.",
-      "Serve hot."
+    "ro": [
+      "Pulpe de pui",
+      "Ceapă verde",
+      "Sos de soia",
+      "Sake",
+      "Mirin",
+      "Zahăr"
+    ],
+    "ru": [
+      "Куриные бёдра",
+      "Зелёный лук",
+      "Соевый соус",
+      "Саке",
+      "Мирин",
+      "Сахар"
     ]
   },
-  {
-    "id": "ramen",
-    "title": "🍜 Ramen",
-    "description": "Hearty noodle soup served in rich broth with toppings like pork, egg, and scallions — the ultimate Japanese comfort food.",
-    "images": [
-      "images/ramen/1.jpg",
-      "images/ramen/2.jpg",
-      "images/ramen/3.jpg"
+  "steps": {
+    "en": [
+      "Cut the chicken into bite-sized pieces.",
+      "Thread the chicken and green onions onto skewers.",
+      "Mix soy sauce, sake, mirin, and sugar to make tare sauce.",
+      "Grill the skewers, basting frequently with tare sauce until fully cooked.",
+      "Serve hot."
     ],
-    "video": "https://www.youtube.com/watch?v=aafmrrx7Bh4",
-    "alt": "Bowl of ramen noodles",
-    "ingredients": [
+    "ro": [
+      "Taie puiul în bucăți potrivite.",
+      "Înfige puiul și ceapa verde pe frigărui.",
+      "Amestecă sosul de soia, sake, mirin și zahărul pentru a prepara sosul tare.",
+      "Gătește frigăruile pe grătar, ungându-le frecvent cu sos tare până sunt complet gătite.",
+      "Servește fierbinte."
+    ],
+    "ru": [
+      "Нарежьте курицу небольшими кусочками.",
+      "Нанизайте курицу и зелёный лук на шампуры.",
+      "Смешайте соевый соус, саке, мирин и сахар, чтобы приготовить соус тарэ.",
+      "Жарьте шашлыки на гриле, регулярно поливая соусом тарэ до полной готовности.",
+      "Подавайте горячими."
+    ]
+  }
+},
+{
+  "id": "ramen",
+  "title": {
+    "en": "🍜 Ramen",
+    "ro": "🍜 Ramen",
+    "ru": "🍜 Рамен"
+  },
+  "description": {
+    "en": "Hearty noodle soup served in rich broth with toppings like pork, egg, and scallions — the ultimate Japanese comfort food.",
+    "ro": "Supă consistentă cu tăiței servită într-un bulion bogat, cu toppinguri precum porc, ou și ceapă verde — mâncarea reconfortantă supremă a Japoniei.",
+    "ru": "Сытный суп с лапшой, подается в наваристом бульоне с начинками, такими как свинина, яйцо и зелёный лук — главное японское блюдо для души."
+  },
+  "images": [
+    "images/ramen/1.jpg",
+    "images/ramen/2.jpg",
+    "images/ramen/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=aafmrrx7Bh4",
+  "alt": {
+    "en": "Bowl of ramen noodles with pork, egg, and toppings",
+    "ro": "Bol cu ramen, porc, ou și alte toppinguri",
+    "ru": "Миска рамена с свининой, яйцом и начинками"
+  },
+  "ingredients": {
+    "en": [
       "Ramen noodles",
       "Pork broth",
       "Soy sauce",
@@ -172,26 +409,74 @@
       "Bamboo shoots",
       "Green onions"
     ],
-    "steps": [
-      "Cook ramen noodles according to package instructions.",
-      "Heat pork broth and add soy sauce.",
-      "Place cooked noodles in a bowl and pour broth over.",
-      "Top with chashu pork, boiled egg, bamboo shoots, and green onions.",
-      "Serve hot."
+    "ro": [
+      "Tăiței ramen",
+      "Bulion de porc",
+      "Sos de soia",
+      "Chashu (porc marinat)",
+      "Ou fiert",
+      "Muguri de bambus",
+      "Ceapă verde"
+    ],
+    "ru": [
+      "Лапша рамен",
+      "Свиной бульон",
+      "Соевый соус",
+      "Свинина чадзю (чашу)",
+      "Варёное яйцо",
+      "Побеги бамбука",
+      "Зелёный лук"
     ]
   },
-  {
-    "id": "donburi",
-    "title": "🍚 Donburi",
-    "description": "A warm bowl of rice topped with flavorful ingredients like beef, egg, or tempura — a quick, satisfying one-dish meal.",
-    "images": [
-      "images/donburi/1.jpg",
-      "images/donburi/2.jpg",
-      "images/donburi/3.jpg"
+  "steps": {
+    "en": [
+      "Cook ramen noodles according to package instructions.",
+      "Heat the pork broth in a pot and season with soy sauce.",
+      "Place the cooked noodles in a serving bowl and pour the broth over them.",
+      "Top with slices of chashu pork, a boiled egg, bamboo shoots, and chopped green onions.",
+      "Serve hot and enjoy immediately."
     ],
-    "video": "https://www.youtube.com/watch?v=P4cy3moWBsM",
-    "alt": "Donburi rice bowl",
-    "ingredients": [
+    "ro": [
+      "Gătește tăițeii ramen conform instrucțiunilor de pe ambalaj.",
+      "Încălzește bulionul de porc într-o oală și asezonează cu sos de soia.",
+      "Pune tăițeii gătiți într-un bol și toarnă bulionul fierbinte peste ei.",
+      "Adaugă felii de porc chashu, un ou fiert, muguri de bambus și ceapă verde tocată.",
+      "Servește fierbinte și savurează imediat."
+    ],
+    "ru": [
+      "Приготовьте лапшу рамен согласно инструкции на упаковке.",
+      "Подогрейте свиной бульон в кастрюле и приправьте соевым соусом.",
+      "Выложите готовую лапшу в миску и залейте горячим бульоном.",
+      "Добавьте кусочки свинины чашу, варёное яйцо, побеги бамбука и зелёный лук.",
+      "Подавайте горячим и сразу же наслаждайтесь."
+    ]
+  }
+},
+{
+  "id": "donburi",
+  "title": {
+    "en": "🍚 Donburi",
+    "ro": "🍚 Donburi",
+    "ru": "🍚 Донбури"
+  },
+  "description": {
+    "en": "A warm bowl of rice topped with flavorful ingredients like beef, egg, or tempura — a quick, satisfying one-dish meal.",
+    "ro": "Un bol cald de orez acoperit cu ingrediente savuroase precum vită, ou sau tempura — o masă rapidă și sățioasă într-un singur bol.",
+    "ru": "Тёплая миска риса с начинкой из мяса, яйца или темпуры — быстрое и сытное блюдо в одной посуде."
+  },
+  "images": [
+    "images/donburi/1.jpg",
+    "images/donburi/2.jpg",
+    "images/donburi/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=P4cy3moWBsM",
+  "alt": {
+    "en": "Japanese donburi rice bowl with toppings",
+    "ro": "Bol de orez donburi cu toppinguri japoneze",
+    "ru": "Миска риса донбури с начинкой"
+  },
+  "ingredients": {
+    "en": [
       "Cooked rice",
       "Chicken or beef",
       "Egg",
@@ -199,52 +484,140 @@
       "Soy sauce",
       "Mirin"
     ],
-    "steps": [
-      "Cook meat and onions in a pan.",
-      "Add soy sauce and mirin to the pan.",
-      "Pour beaten egg over and cook until set.",
-      "Serve over a bowl of hot rice."
+    "ro": [
+      "Orez gătit",
+      "Carne de pui sau vită",
+      "Ou",
+      "Ceapă",
+      "Sos de soia",
+      "Mirin"
+    ],
+    "ru": [
+      "Варёный рис",
+      "Курица или говядина",
+      "Яйцо",
+      "Лук",
+      "Соевый соус",
+      "Мирин"
     ]
   },
-  {
-    "id": "tamagoyaki",
-    "title": "🍳 Tamagoyaki",
-    "description": "A slightly sweet rolled omelet made from seasoned eggs — fluffy, layered, and often served in sushi or bento boxes.",
-    "images": [
-      "images/tamagoyaki/1.jpg",
-      "images/tamagoyaki/2.jpg",
-      "images/tamagoyaki/3.jpg",
-      "images/tamagoyaki/4.jpg"
+  "steps": {
+    "en": [
+      "Cook the meat and onions in a pan over medium heat.",
+      "Add soy sauce and mirin, and let the flavors combine.",
+      "Pour beaten egg over the mixture and cook until just set.",
+      "Serve immediately over a bowl of hot cooked rice."
     ],
-    "video": "https://www.youtube.com/shorts/Uz8i-QT4N6g",
-    "alt": "Tamagoyaki rolled omelette",
-    "ingredients": [
+    "ro": [
+      "Gătește carnea și ceapa într-o tigaie la foc mediu.",
+      "Adaugă sosul de soia și mirinul și lasă aromele să se combine.",
+      "Toarnă oul bătut peste amestec și gătește până se încheagă ușor.",
+      "Servește imediat peste un bol de orez fierbinte."
+    ],
+    "ru": [
+      "Обжарьте мясо и лук на среднем огне.",
+      "Добавьте соевый соус и мирин, чтобы объединить вкусы.",
+      "Вылейте взбитое яйцо сверху и готовьте до лёгкого схватывания.",
+      "Сразу же подавайте на горячем варёном рисе."
+    ]
+  }
+},
+{
+  "id": "tamagoyaki",
+  "title": {
+    "en": "🍳 Tamagoyaki",
+    "ro": "🍳 Tamagoyaki",
+    "ru": "🍳 Тамагояки"
+  },
+  "description": {
+    "en": "A slightly sweet rolled omelet made from seasoned eggs — fluffy, layered, and often served in sushi or bento boxes.",
+    "ro": "Omletă japoneză rulată, ușor dulce, făcută din ouă asezonate — pufoasă, stratificată și adesea servită în sushi sau cutii bento.",
+    "ru": "Слегка сладкий рулет из приправленных яиц — пышный, слоёный и часто подаётся в суши или бенто."
+  },
+  "images": [
+    "images/tamagoyaki/1.jpg",
+    "images/tamagoyaki/2.jpg",
+    "images/tamagoyaki/3.jpg",
+    "images/tamagoyaki/4.jpg"
+  ],
+  "video": "https://www.youtube.com/shorts/Uz8i-QT4N6g",
+  "alt": {
+    "en": "Fluffy rolled Japanese omelette tamagoyaki",
+    "ro": "Omletă japoneză rulată, pufoasă, tamagoyaki",
+    "ru": "Пышный японский омлет рулетом, тамагояки"
+  },
+  "ingredients": {
+    "en": [
       "Eggs",
       "Soy sauce",
       "Sugar",
       "Mirin",
       "Vegetable oil"
     ],
-    "steps": [
-      "Beat eggs with soy sauce, sugar, and mirin.",
-      "Heat oil in a rectangular pan.",
-      "Pour a thin layer of egg mixture and cook until set.",
-      "Roll up and push to the side.",
-      "Add more egg mixture and repeat until all eggs are used."
+    "ro": [
+      "Ouă",
+      "Sos de soia",
+      "Zahăr",
+      "Mirin",
+      "Ulei vegetal"
+    ],
+    "ru": [
+      "Яйца",
+      "Соевый соус",
+      "Сахар",
+      "Мирин",
+      "Растительное масло"
     ]
   },
-  {
-    "id": "soba",
-    "title": "🍜 Soba",
-    "description": "Nutty buckwheat noodles served hot or cold with dipping sauce — refreshing, light, and rich in flavor.",
-    "images": [
-      "images/soba/1.jpg",
-      "images/soba/2.jpg",
-      "images/soba/3.jpg"
+  "steps": {
+    "en": [
+      "Beat eggs with soy sauce, sugar, and mirin until well combined.",
+      "Heat a thin layer of oil in a rectangular tamagoyaki pan.",
+      "Pour a thin layer of egg mixture and cook until it begins to set.",
+      "Roll the cooked layer and push it to one side of the pan.",
+      "Add more egg mixture, lift the roll to let the new layer flow underneath, and repeat until all eggs are used."
     ],
-    "video": "https://www.youtube.com/watch?v=0rSmR7Ctg5w",
-    "alt": "Bowl of soba noodles",
-    "ingredients": [
+    "ro": [
+      "Bate ouăle cu sos de soia, zahăr și mirin până se omogenizează.",
+      "Încălzește un strat subțire de ulei într-o tigaie rectangulară pentru tamagoyaki.",
+      "Toarnă un strat subțire de amestec de ou și gătește până începe să se întărească.",
+      "Rulează stratul gătit și împinge-l într-o parte a tigăii.",
+      "Adaugă mai mult amestec de ou, ridică ruloul pentru a lăsa stratul nou să curgă dedesubt, și repetă până când folosești tot amestecul."
+    ],
+    "ru": [
+      "Взбейте яйца с соевым соусом, сахаром и мирином до однородности.",
+      "Разогрейте тонкий слой масла в прямоугольной сковороде для тамагояки.",
+      "Вылейте тонкий слой яичной смеси и готовьте, пока он не начнет схватываться.",
+      "Сверните слой в рулет и сдвиньте его к краю сковороды.",
+      "Добавьте ещё яичной смеси, приподнимите рулет, чтобы новый слой мог затечь под него, и повторяйте, пока смесь не закончится."
+    ]
+  }
+},
+{
+  "id": "soba",
+  "title": {
+    "en": "🍜 Soba",
+    "ro": "🍜 Soba",
+    "ru": "🍜 Соба"
+  },
+  "description": {
+    "en": "Nutty buckwheat noodles served hot or cold with dipping sauce — refreshing, light, and rich in flavor.",
+    "ro": "Tăiței de hrișcă cu gust de nuci, serviți fierbinți sau reci cu sos de dips — răcoritori, ușori și plini de aromă.",
+    "ru": "Гречневая лапша с ореховым вкусом, подается горячей или холодной с соусом для обмакивания — освежающая, лёгкая и ароматная."
+  },
+  "images": [
+    "images/soba/1.jpg",
+    "images/soba/2.jpg",
+    "images/soba/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=0rSmR7Ctg5w",
+  "alt": {
+    "en": "Bowl of soba noodles served with broth",
+    "ro": "Bol cu tăiței soba serviți cu supă",
+    "ru": "Миска с лапшой соба и бульоном"
+  },
+  "ingredients": {
+    "en": [
       "Soba noodles",
       "Dashi broth",
       "Soy sauce",
@@ -252,132 +625,352 @@
       "Green onions",
       "Tempura flakes"
     ],
-    "steps": [
-      "Cook soba noodles according to package instructions.",
-      "Prepare dashi broth with soy sauce and mirin.",
-      "Serve noodles in a bowl and pour broth over.",
-      "Garnish with green onions and tempura flakes."
+    "ro": [
+      "Tăiței soba",
+      "Supă dashi",
+      "Sos de soia",
+      "Mirin",
+      "Ceapă verde",
+      "Fulgi de tempura"
+    ],
+    "ru": [
+      "Лапша соба",
+      "Бульон даси",
+      "Соевый соус",
+      "Мирин",
+      "Зелёный лук",
+      "Хлопья темпуры"
     ]
   },
-  {
-    "id": "miso-soup",
-    "title": "🍲 Miso Soup",
-    "description": "Classic Japanese soup made with miso paste, tofu, and seaweed — light yet deeply savory, served with nearly every meal.",
-    "images": [
-      "images/miso soup/1.jpg",
-      "images/miso soup/2.jpg",
-      "images/miso soup/3.jpg"
+  "steps": {
+    "en": [
+      "Cook soba noodles according to package instructions, then rinse in cold water if serving chilled.",
+      "Prepare dashi-based broth by combining dashi, soy sauce, and mirin.",
+      "Serve noodles in a bowl and pour broth over (or serve dipping sauce separately if cold).",
+      "Garnish with chopped green onions and tempura flakes before serving."
     ],
-    "video": "https://www.youtube.com/shorts/LqezQuxBGuw",
-    "alt": "Bowl of miso soup",
-    "ingredients": [
+    "ro": [
+      "Gătește tăițeii soba conform instrucțiunilor de pe ambalaj, apoi clătește-i cu apă rece dacă îi servești reci.",
+      "Prepară supa pe bază de dashi amestecând dashi, sos de soia și mirin.",
+      "Servește tăițeii într-un bol și toarnă supa peste ei (sau servește sosul de dips separat dacă sunt reci).",
+      "Garnisește cu ceapă verde tocată și fulgi de tempura înainte de servire."
+    ],
+    "ru": [
+      "Отварите лапшу соба согласно инструкции и промойте холодной водой, если подаёте охлаждённой.",
+      "Приготовьте бульон на основе даси, добавив соевый соус и мирин.",
+      "Подавайте лапшу в миске и залейте бульоном (или подайте соус для обмакивания отдельно, если блюдо холодное).",
+      "Украсьте зелёным луком и хлопьями темпуры перед подачей."
+    ]
+  }
+},
+{
+  "id": "miso-soup",
+  "title": {
+    "en": "🍲 Miso Soup",
+    "ro": "🍲 Supă Miso",
+    "ru": "🍲 Суп мисо"
+  },
+  "description": {
+    "en": "Classic Japanese soup made with miso paste, tofu, and seaweed — light yet deeply savory, served with nearly every meal.",
+    "ro": "Supă japoneză clasică făcută cu pastă miso, tofu și alge — ușoară, dar plină de savoare, servită aproape la fiecare masă.",
+    "ru": "Классический японский суп из пасты мисо, тофу и водорослей — лёгкий, но насыщенный по вкусу, подаётся почти к каждому приёму пищи."
+  },
+  "images": [
+    "images/miso soup/1.jpg",
+    "images/miso soup/2.jpg",
+    "images/miso soup/3.jpg"
+  ],
+  "video": "https://www.youtube.com/shorts/LqezQuxBGuw",
+  "alt": {
+    "en": "Bowl of traditional Japanese miso soup",
+    "ro": "Bol cu supă miso tradițională japoneză",
+    "ru": "Тарелка традиционного японского супа мисо"
+  },
+  "ingredients": {
+    "en": [
       "Miso paste",
       "Dashi broth",
       "Tofu",
       "Seaweed",
       "Green onions"
     ],
-    "steps": [
-      "Prepare dashi broth.",
-      "Dissolve miso paste into the broth.",
-      "Add tofu and seaweed.",
-      "Simmer briefly and garnish with green onions."
+    "ro": [
+      "Pastă miso",
+      "Supă dashi",
+      "Tofu",
+      "Alge",
+      "Ceapă verde"
+    ],
+    "ru": [
+      "Паста мисо",
+      "Бульон даси",
+      "Тофу",
+      "Морские водоросли",
+      "Зелёный лук"
     ]
   },
-  {
-    "id": "curry-rice",
-    "title": "🍛 Curry Rice",
-    "description": "Japanese-style curry with thick, mildly spiced sauce over rice — hearty, sweet, and comforting.",
-    "images": [
-      "images/curry rice/1.jpg",
-      "images/curry rice/2.jpg",
-      "images/curry rice/3.jpg"
+  "steps": {
+    "en": [
+      "Prepare the dashi broth.",
+      "Dissolve miso paste into the hot broth without boiling.",
+      "Add tofu cubes and seaweed.",
+      "Simmer gently and garnish with chopped green onions before serving."
     ],
-    "video": "https://www.youtube.com/watch?v=d-TjFtERyeQ",
-    "alt": "Plate of curry rice",
-    "ingredients": [
+    "ro": [
+      "Prepară supa dashi.",
+      "Dizolvă pasta miso în supa fierbinte fără a o fierbe.",
+      "Adaugă cubulețe de tofu și alge.",
+      "Lasă să fiarbă ușor și garnisește cu ceapă verde înainte de servire."
+    ],
+    "ru": [
+      "Приготовьте бульон даси.",
+      "Растворите пасту мисо в горячем бульоне, не доводя до кипения.",
+      "Добавьте кубики тофу и водоросли.",
+      "Легко прогрейте и украсьте зелёным луком перед подачей."
+    ]
+  }
+},
+{
+  "id": "curry-rice",
+  "title": {
+    "en": "🍛 Curry Rice",
+    "ro": "🍛 Orez cu Curry",
+    "ru": "🍛 Карри с рисом"
+  },
+  "description": {
+    "en": "Japanese-style curry with thick, mildly spiced sauce over rice — hearty, sweet, and comforting.",
+    "ro": "Curry în stil japonez cu sos gros, ușor condimentat, servit peste orez — sățios, dulce și reconfortant.",
+    "ru": "Японское карри с густым мягко пряным соусом, подаваемым с рисом — сытное, сладковатое и успокаивающее блюдо."
+  },
+  "images": [
+    "images/curry rice/1.jpg",
+    "images/curry rice/2.jpg",
+    "images/curry rice/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=d-TjFtERyeQ",
+  "alt": {
+    "en": "Plate of Japanese curry rice with meat and vegetables",
+    "ro": "Farfurie cu curry japonez și orez, cu carne și legume",
+    "ru": "Тарелка японского карри с рисом, мясом и овощами"
+  },
+  "ingredients": {
+    "en": [
       "Curry roux",
       "Beef or chicken",
       "Potatoes",
       "Carrots",
       "Onions",
-      "Rice"
+      "Cooked rice"
     ],
-    "steps": [
-      "Brown meat and vegetables in a pot.",
-      "Add water and bring to a boil.",
-      "Stir in curry roux and simmer until thickened.",
-      "Serve over cooked rice."
+    "ro": [
+      "Cuburi de curry",
+      "Carne de vită sau pui",
+      "Cartofi",
+      "Morcovi",
+      "Ceapă",
+      "Orez gătit"
+    ],
+    "ru": [
+      "Кубики карри (ру)",
+      "Говядина или курица",
+      "Картофель",
+      "Морковь",
+      "Лук",
+      "Варёный рис"
     ]
   },
-  {
-    "id": "onigiri",
-    "title": "🍙 Onigiri",
-    "description": "Rice balls filled with ingredients like salmon or pickled plum and wrapped in seaweed — a beloved portable snack.",
-    "images": [
-      "images/onigiri/1.jpg",
-      "images/onigiri/2.jpg",
-      "images/onigiri/3.jpg"
+  "steps": {
+    "en": [
+      "Brown the meat and vegetables in a pot.",
+      "Add water and bring to a boil.",
+      "Stir in curry roux and simmer until the sauce thickens.",
+      "Serve hot over cooked rice."
     ],
-    "video": "https://www.youtube.com/shorts/__OLEiXVaSc",
-    "alt": "Rice balls with fillings",
-    "ingredients": [
+    "ro": [
+      "Rumenește carnea și legumele într-o oală.",
+      "Adaugă apă și adu la fierbere.",
+      "Adaugă cuburile de curry și fierbe la foc mic până când sosul se îngroașă.",
+      "Servește fierbinte peste orez gătit."
+    ],
+    "ru": [
+      "Обжарьте мясо и овощи в кастрюле.",
+      "Добавьте воду и доведите до кипения.",
+      "Добавьте кубики карри и тушите до загустения соуса.",
+      "Подавайте горячим на рисе."
+    ]
+  }
+},
+{
+  "id": "onigiri",
+  "title": {
+    "en": "🍙 Onigiri",
+    "ro": "🍙 Onigiri",
+    "ru": "🍙 Онигири"
+  },
+  "description": {
+    "en": "Rice balls filled with ingredients like salmon or pickled plum and wrapped in seaweed — a beloved portable snack.",
+    "ro": "Biluțe de orez umplute cu ingrediente precum somon sau prună murată și învelite în alge — o gustare portabilă îndrăgită.",
+    "ru": "Рисовые шарики с начинкой, такой как лосось или маринованная слива, обёрнутые в водоросли — любимая портативная закуска."
+  },
+  "images": [
+    "images/onigiri/1.jpg",
+    "images/onigiri/2.jpg",
+    "images/onigiri/3.jpg"
+  ],
+  "video": "https://www.youtube.com/shorts/__OLEiXVaSc",
+  "alt": {
+    "en": "Japanese rice balls with various fillings, wrapped in nori",
+    "ro": "Biluțe japoneze de orez cu diverse umpluturi, învelite în nori",
+    "ru": "Японские рисовые шарики с начинками, обёрнутые в нори"
+  },
+  "ingredients": {
+    "en": [
       "Cooked rice",
       "Salt",
       "Nori sheets",
-      "Fillings (plum, salmon, tuna)"
+      "Fillings (pickled plum, salmon, tuna)"
     ],
-    "steps": [
-      "Wet hands with salted water.",
-      "Shape rice into triangles.",
-      "Place desired filling in the center.",
-      "Wrap with nori and serve."
+    "ro": [
+      "Orez gătit",
+      "Sare",
+      "Foi de nori",
+      "Umpluturi (prună murată, somon, ton)"
+    ],
+    "ru": [
+      "Варёный рис",
+      "Соль",
+      "Листы нори",
+      "Начинки (маринованная слива, лосось, тунец)"
     ]
   },
-    {
-    "id": "gyoza",
-    "title": "🥟 Gyoza",
-    "description": "Pan-fried dumplings filled with pork, cabbage, and garlic — crisp on the bottom, tender on top, and perfect with soy dipping sauce.",
-    "images": [
-      "images/gyoza/1.jpg",
-      "images/gyoza/2.jpg",
-      "images/gyoza/3.jpg"
+  "steps": {
+    "en": [
+      "Wet hands with salted water.",
+      "Shape the rice into a triangle or ball.",
+      "Place your desired filling in the center and press gently to seal.",
+      "Wrap with nori and serve fresh."
     ],
-    "video": "https://www.youtube.com/watch?v=5-yt7tFpHPY",
-    "alt": "Pan-fried gyoza dumplings",
-    "ingredients": [
+    "ro": [
+      "Umezește mâinile cu apă sărată.",
+      "Modelează orezul în formă de triunghi sau bilă.",
+      "Adaugă umplutura dorită în centru și presează ușor pentru a sigila.",
+      "Învelește cu nori și servește proaspăt."
+    ],
+    "ru": [
+      "Смочите руки солёной водой.",
+      "Сформируйте рис в треугольник или шарик.",
+      "Положите начинку в центр и аккуратно закройте рисом.",
+      "Обверните нори и подавайте свежим."
+    ]
+  }
+},
+{
+  "id": "gyoza",
+  "title": {
+    "en": "🥟 Gyoza",
+    "ro": "🥟 Gyoza",
+    "ru": "🥟 Гёдза"
+  },
+  "description": {
+    "en": "Pan-fried dumplings filled with pork, cabbage, and garlic — crisp on the bottom, tender on top, and perfect with soy dipping sauce.",
+    "ro": "Colțunași prăjiți umpluți cu porc, varză și usturoi — crocanți la bază, fragezi deasupra și perfecți cu sos de soia.",
+    "ru": "Жареные пельмени с начинкой из свинины, капусты и чеснока — хрустящие снизу, мягкие сверху и идеально подходят с соевым соусом."
+  },
+  "images": [
+    "images/gyoza/1.jpg",
+    "images/gyoza/2.jpg",
+    "images/gyoza/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=5-yt7tFpHPY",
+  "alt": {
+    "en": "Pan-fried gyoza dumplings served with dipping sauce",
+    "ro": "Colțunași gyoza prăjiți serviți cu sos",
+    "ru": "Жареные пельмени гёдза, поданные с соусом"
+  },
+  "ingredients": {
+    "en": [
       "Gyoza wrappers",
       "Ground pork or chicken",
-      "Cabbage, finely chopped",
-      "Garlic, minced",
-      "Ginger, minced",
-      "Green onions, chopped",
+      "Finely chopped cabbage",
+      "Minced garlic",
+      "Minced ginger",
+      "Chopped green onions",
       "Soy sauce",
       "Sesame oil"
     ],
-    "steps": [
-      "Mix meat, cabbage, garlic, ginger, green onions, soy sauce, and sesame oil in a bowl.",
-      "Place a small amount of filling in each wrapper and fold to seal.",
-      "Heat oil in a skillet, arrange gyoza, and fry until bottoms are golden.",
-      "Add water, cover, and steam for 3–5 minutes until cooked through.",
-      "Serve hot with dipping sauce (soy sauce + vinegar + chili oil)."
+    "ro": [
+      "Foi pentru gyoza",
+      "Carne tocată de porc sau pui",
+      "Varză tocată fin",
+      "Usturoi mărunțit",
+      "Ghimbir mărunțit",
+      "Ceapă verde tocată",
+      "Sos de soia",
+      "Ulei de susan"
+    ],
+    "ru": [
+      "Тесто для гёдза (обертки)",
+      "Фарш из свинины или курицы",
+      "Мелко нарезанная капуста",
+      "Измельчённый чеснок",
+      "Измельчённый имбирь",
+      "Нарезанный зелёный лук",
+      "Соевый соус",
+      "Кунжутное масло"
     ]
   },
-  {
-    "id": "takoyaki",
-    "title": "🐙 Takoyaki",
-    "description": "Crispy golden balls of batter filled with octopus, topped with sauce, mayo, and bonito flakes — Osaka’s famous street food.",
-    "images": [
-      "images/takoyaki/1.jpg",
-      "images/takoyaki/2.jpg",
-      "images/takoyaki/3.jpg"
+  "steps": {
+    "en": [
+      "Mix ground meat, cabbage, garlic, ginger, green onions, soy sauce, and sesame oil in a bowl.",
+      "Place a small amount of filling in each wrapper and fold to seal tightly.",
+      "Heat oil in a skillet, arrange the gyoza, and fry until the bottoms are golden brown.",
+      "Add water, cover the pan, and steam for 3–5 minutes until cooked through.",
+      "Serve hot with dipping sauce made from soy sauce, vinegar, and chili oil."
     ],
-    "video": "https://www.youtube.com/shorts/3PB_S-YEOBU",
-    "alt": "Takoyaki balls with sauce",
-    "ingredients": [
-      "Takoyaki batter mix or flour + dashi stock",
+    "ro": [
+      "Amestecă carnea tocată cu varza, usturoiul, ghimbirul, ceapa verde, sosul de soia și uleiul de susan.",
+      "Pune o cantitate mică de umplutură în fiecare foaie și împăturește pentru a sigila bine.",
+      "Încălzește ulei într-o tigaie, așază gyoza și prăjește până devin aurii la bază.",
+      "Adaugă apă, acoperă și gătește la abur 3–5 minute până sunt complet gătite.",
+      "Servește fierbinți cu sos de soia, oțet și ulei picant."
+    ],
+    "ru": [
+      "Смешайте фарш, капусту, чеснок, имбирь, зелёный лук, соевый соус и кунжутное масло.",
+      "Положите немного начинки в каждую обёртку и тщательно защипните края.",
+      "Разогрейте масло на сковороде, выложите гёдза и обжарьте до золотистой корочки снизу.",
+      "Добавьте воду, накройте крышкой и готовьте на пару 3–5 минут.",
+      "Подавайте горячими с соусом из соевого соуса, уксуса и острого масла."
+    ]
+  }
+},
+{
+  "id": "takoyaki",
+  "title": {
+    "en": "🐙 Takoyaki",
+    "ro": "🐙 Takoyaki",
+    "ru": "🐙 Такояки"
+  },
+  "description": {
+    "en": "Crispy golden balls of batter filled with octopus, topped with sauce, mayo, and bonito flakes — Osaka’s famous street food.",
+    "ro": "Biluțe aurii crocante din aluat umplute cu caracatiță, acoperite cu sos, maioneză și fulgi de bonito — faimosul street food din Osaka.",
+    "ru": "Хрустящие золотистые шарики из теста с осьминогом, покрытые соусом, майонезом и хлопьями бонито — знаменитая уличная еда Осаки."
+  },
+  "images": [
+    "images/takoyaki/1.jpg",
+    "images/takoyaki/2.jpg",
+    "images/takoyaki/3.jpg"
+  ],
+  "video": "https://www.youtube.com/shorts/3PB_S-YEOBU",
+  "alt": {
+    "en": "Freshly cooked takoyaki balls topped with sauce and bonito flakes",
+    "ro": "Biluțe takoyaki proaspăt gătite, acoperite cu sos și fulgi de bonito",
+    "ru": "Свежеприготовленные шарики такояки с соусом и хлопьями бонито"
+  },
+  "ingredients": {
+    "en": [
+      "Takoyaki batter mix or flour with dashi stock",
       "Octopus pieces",
-      "Green onions, chopped",
+      "Chopped green onions",
       "Pickled ginger",
       "Tempura scraps (tenkasu)",
       "Takoyaki sauce",
@@ -385,41 +978,130 @@
       "Bonito flakes",
       "Seaweed powder"
     ],
-    "steps": [
-      "Prepare batter according to instructions.",
-      "Preheat a takoyaki pan and grease each mold.",
-      "Pour batter into molds and add octopus, green onions, ginger, and tempura scraps.",
-      "Turn balls using skewers as they cook until golden brown.",
-      "Serve hot, drizzled with takoyaki sauce, mayonnaise, bonito flakes, and seaweed powder."
+    "ro": [
+      "Mix pentru aluat takoyaki sau făină cu supă dashi",
+      "Bucăți de caracatiță",
+      "Ceapă verde tocată",
+      "Ghimbir murat",
+      "Resturi de tempura (tenkasu)",
+      "Sos takoyaki",
+      "Maioneză japoneză",
+      "Fulgi de bonito",
+      "Pulbere de alge"
+    ],
+    "ru": [
+      "Смесь для теста такояки или мука с бульоном даси",
+      "Кусочки осьминога",
+      "Нарезанный зелёный лук",
+      "Маринованный имбирь",
+      "Хрустящие крошки темпуры (тенкасу)",
+      "Соус такояки",
+      "Японский майонез",
+      "Хлопья бонито",
+      "Порошок из морских водорослей"
     ]
   },
-  {
-    "id": "yakisoba",
-    "title": "🍜 Yakisoba",
-    "description": "Savory stir-fried noodles with vegetables and your choice of protein.",
-    "images": [
-      "images/yakisoba/1.jpg",
-      "images/yakisoba/2.jpg",
-      "images/yakisoba/3.jpg"
+  "steps": {
+    "en": [
+      "Prepare the batter according to instructions.",
+      "Preheat the takoyaki pan and grease each mold.",
+      "Pour batter into molds and add octopus, green onions, pickled ginger, and tempura scraps.",
+      "Turn the batter with skewers as it cooks to form round balls until golden brown.",
+      "Serve hot, topped with takoyaki sauce, Japanese mayonnaise, bonito flakes, and seaweed powder."
     ],
-    "video": "https://www.youtube.com/watch?v=3a-NreKMgLo",
-    "alt": "Fried yakisoba noodles",
-    "ingredients": [
+    "ro": [
+      "Pregătește aluatul conform instrucțiunilor.",
+      "Preîncălzește tigaia pentru takoyaki și unge fiecare formă.",
+      "Toarnă aluatul în forme și adaugă caracatiță, ceapă verde, ghimbir murat și resturi de tempura.",
+      "Învârte biluțele cu bețe speciale în timp ce se gătesc până devin aurii.",
+      "Servește fierbinte, acoperite cu sos takoyaki, maioneză japoneză, fulgi de bonito și pulbere de alge."
+    ],
+    "ru": [
+      "Приготовьте тесто согласно инструкции.",
+      "Разогрейте форму для такояки и смажьте каждую ячейку маслом.",
+      "Залейте тесто в формы и добавьте осьминога, зелёный лук, маринованный имбирь и крошки темпуры.",
+      "Поворачивайте шарики шпажками во время готовки, пока они не станут золотистыми.",
+      "Подавайте горячими, полив соусом такояки, японским майонезом, хлопьями бонито и посыпав порошком водорослей."
+    ]
+  }
+},
+  {
+  "id": "yakisoba",
+  "title": {
+    "en": "🍜 Yakisoba",
+    "ro": "🍜 Yakisoba",
+    "ru": "🍜 Якитсоба"
+  },
+  "description": {
+    "en": "Savory stir-fried noodles with vegetables and your choice of protein.",
+    "ro": "Tăiței prăjiți savuroși cu legume și proteina la alegere.",
+    "ru": "Пикантная жареная лапша с овощами и белком на ваш выбор."
+  },
+  "images": [
+    "images/yakisoba/1.jpg",
+    "images/yakisoba/2.jpg",
+    "images/yakisoba/3.jpg"
+  ],
+  "video": "https://www.youtube.com/watch?v=3a-NreKMgLo",
+  "alt": {
+    "en": "Fried yakisoba noodles served with vegetables and pickled ginger",
+    "ro": "Tăiței yakisoba prăjiți serviți cu legume și ghimbir murat",
+    "ru": "Жареная лапша якисоба с овощами и маринованным имбирем"
+  },
+  "ingredients": {
+    "en": [
       "Yakisoba noodles",
-      "Cabbage, shredded",
-      "Carrot, julienned",
-      "Onion, sliced",
+      "Shredded cabbage",
+      "Julienned carrot",
+      "Sliced onion",
       "Protein (pork, chicken, or tofu)",
       "Yakisoba sauce",
       "Vegetable oil",
       "Pickled ginger (beni shoga)"
     ],
-    "steps": [
+    "ro": [
+      "Tăiței yakisoba",
+      "Varză tocată",
+      "Morcov tăiat julienne",
+      "Ceapă feliată",
+      "Proteină (porc, pui sau tofu)",
+      "Sos yakisoba",
+      "Ulei vegetal",
+      "Ghimbir murat (beni shoga)"
+    ],
+    "ru": [
+      "Лапша якисоба",
+      "Нашинкованная капуста",
+      "Морковь соломкой",
+      "Нарезанный лук",
+      "Белок (свинина, курица или тофу)",
+      "Соус якисоба",
+      "Растительное масло",
+      "Маринованный имбирь (бени сёга)"
+    ]
+  },
+  "steps": {
+    "en": [
       "Heat oil in a large pan or wok.",
       "Add protein and cook until done.",
       "Add vegetables and stir-fry until slightly softened.",
       "Add noodles and pour yakisoba sauce over; stir well to combine.",
       "Serve hot, garnished with pickled ginger."
+    ],
+    "ro": [
+      "Încălzește uleiul într-o tigaie mare sau wok.",
+      "Adaugă proteina și gătește până este făcută.",
+      "Adaugă legumele și prăjește până devin ușor moi.",
+      "Adaugă tăițeii și toarnă sosul yakisoba; amestecă bine.",
+      "Servește fierbinte, garnisit cu ghimbir murat."
+    ],
+    "ru": [
+      "Разогрейте масло в большой сковороде или воке.",
+      "Добавьте белок и готовьте до готовности.",
+      "Добавьте овощи и обжаривайте до лёгкой мягкости.",
+      "Добавьте лапшу и залейте соусом якисоба; хорошо перемешайте.",
+      "Подавайте горячим, украсив маринованным имбирем."
     ]
   }
+}
 ]
