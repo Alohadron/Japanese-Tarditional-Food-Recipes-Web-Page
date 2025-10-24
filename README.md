@@ -59,18 +59,16 @@ To run this properly, you must use a local development server.
 
   All content is loaded dynamically using JavaScript and JSON
 
-  🌱 Future Improvements
+  **E) Future Improvements**
 
   🔎 Search & filtering capabilities
-
-  🎨 Dark mode
 
   🌐 Multi-language support (Japanese/English toggle)
 
   🧁 Add dessert category & seasonal dishes
   
 
-**E) Contributing**
+**F) Contributing**
 
   Contributions are welcome!
 
