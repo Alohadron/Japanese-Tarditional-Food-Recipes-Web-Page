@@ -26,7 +26,7 @@ A front-end web project that showcases authentic Japanese traditional food recip
 
 
 
-🚀 Getting Started (Using Node.js + Live Server)
+**C) Getting Started (Using Node.js + Live Server)**
 
 This project uses JSON files, which cannot be loaded by directly opening the HTML file in a browser due to browser security restrictions (CORS).
 To run this properly, you must use a local development server.
@@ -76,7 +76,7 @@ This will:
 ├── /patterns         # UI pattern assets
 └── Japanese Food List.doc  # Reference document for recipes
 
-**C) Usage**
+**D) Usage**
 
   Browse recipes via the homepage
 
@@ -95,7 +95,7 @@ This will:
   🧁 Add dessert category & seasonal dishes
   
 
-**D) Contributing**
+**E) Contributing**
 
   Contributions are welcome!
 
