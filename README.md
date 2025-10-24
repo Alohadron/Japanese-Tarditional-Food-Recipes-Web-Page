@@ -63,8 +63,6 @@ To run this properly, you must use a local development server.
 
   🔎 Search & filtering capabilities
 
-  🌐 Multi-language support (Japanese/English toggle)
-
   🧁 Add dessert category & seasonal dishes
   
 
