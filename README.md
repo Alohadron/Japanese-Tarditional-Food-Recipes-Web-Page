@@ -13,11 +13,16 @@ A front-end web project that showcases authentic Japanese traditional food recip
 
 * Tech Stack
   
-Technology	Purpose
-HTML	Page structure
-CSS	Styling and responsive layout
-JavaScript	Dynamic interaction and JSON data fetching
-Node.js + live-server	Local development server to support JSON loading
+  Technology	Purpose
+
+  HTML	Page structure
+
+  CSS	Styling and responsive layout
+
+  JavaScript	Dynamic interaction and JSON data fetching
+
+  Node.js + live-server	Local development server to support JSON loading
+
 
 
 🚀 Getting Started (Using Node.js + Live Server)
@@ -47,10 +52,15 @@ cd Japanese-Tarditional-Food-Recipes-Web-Page
 
 
 This will:
+
 - Launch your default browser
+
 - Serve files correctly with JSON support
+
 - Auto-reload when you make changes
+
 - Your site will be available at:
+
 - http://127.0.0.1:8080
 
 
@@ -68,8 +78,10 @@ This will:
 
 * Usage
 
-  Browse recipes via the homepage
+Browse recipes via the homepage
+
 Click on items to view ingredients, preparation method, and cultural insights
+
 All content is loaded dynamically using JavaScript and JSON
 
 🌱 Future Improvements
@@ -85,10 +97,15 @@ All content is loaded dynamically using JavaScript and JSON
 🤝 Contributing
 
 Contributions are welcome!
+
 Fork this repository
+
 Create a branch (feature/new-recipe)
+
 Commit your changes
+
 Open a Pull Request
+
 
 📄 License
 
