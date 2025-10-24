@@ -77,12 +77,12 @@
 :root[data-theme="light"] {
   /* Base Colors */
   --color-bg-page: #f4f1e9;
-  --subtitle-bg: rgb(255, 136, 255);
+  --subtitle-bg: rgb(255, 180, 255);
   --color-surface-card: rgba(255, 220, 255, 0.814);
   --color-surface-modal: #ffc8c8;
   --color-text-primary: #3c2f2f; /* deep warm brown */
   --color-text-contrast: #000000eb;
-  --color-accent: rgba(255, 136, 255, 0.908); /* warm earthy orange */
+  --color-accent: rgba(255, 136, 255, 0.636); /* warm earthy orange */
   --color-link-website: #b34d4d;
   --color-link-map: #356d88;
   --overlay-bg: rgba(255, 255, 255, 0.7);
@@ -626,7 +626,7 @@ html[data-theme="light"] .location-link:hover {
   color: var(--color-accent) !important;
 }
 /* ==========================================================================
-   🌸 LIGHT MODE — LANGUAGE DROPDOWN FIX
+   🌸 LIGHT MODE — LANGUAGE DROPDOWN 
    ========================================================================== */
 html[data-theme="light"] #language-select {
   background: rgba(255, 255, 255, 0.8) !important;
