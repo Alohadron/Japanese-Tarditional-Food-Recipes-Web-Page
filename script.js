@@ -1,379 +1,546 @@
-// =========================
-// Food Gallery — Final JS
-// =========================
+/* ============================================================================
+   Food Gallery — Refactored ES Module
+   Architecture: Config → State → DOM → i18n → Utils → Render → Events → Init
+   - Scalable, maintainable, and framework-friendly (ready for React/Vite).
+   - Includes inline error UI, defensive rendering, and performance guardrails.
+   ========================================================================== */
 
-// Global
-let recipes = [];
-let lastFocusedCard = null; // remember last clicked card to restore focus
+/* ============================================================================
+   1) APP CONFIG & CONSTANTS
+   - Centralize paths, selectors, feature flags, and translatable UI text.
+   ========================================================================== */
+export const APP_CONFIG = {
+  dataUrl: 'data/recipes.json',
+  selectors: {
+    languageSelect: '#language-select',
+    gallery: '.grid',
+    overlay: '#modalOverlay',
+    modalImage: '#modalImage',
+    modalTitle: '#modalTitle',
+    modalIngredients: '#modalIngredients',
+    modalSteps: '#modalSteps',
+    modalCloseBtn: '#closeBtn',
+    recipeContent: '#recipeContent',
+    modalImageWrap: '#modalImageWrap',
+    videoContainer: '#videoContainer',
+    videoFrameWrap: '#videoFrameWrap',
+    modalLocationsList: '#modalLocationsList',
+    fadeTop: '.fade-top',
+    fadeBottom: '.fade-bottom',
+  },
+  a11y: {
+    modalOpenBodyClass: 'modal-open',
+    focusTrapSelectors:
+      'button, [href], iframe, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+  },
+  // Simple flags to toggle optional behaviors in the future
+  features: {
+    inlineErrors: true, // show user-friendly errors inside the gallery
+    consoleDebug: true, // surface developer logs
+  },
+};
 
-// ✅ Default language (fallback)
-let currentLang = localStorage.getItem('language') || 'en';
-
-// ✅ Get the dropdown element
-const languageSelect = document.getElementById('language-select');
-
-// ✅ Set the dropdown to the saved language when the page loads
-languageSelect.value = currentLang;
-
-// ✅ Language change event (only once!)
-languageSelect.addEventListener('change', (event) => {
-  currentLang = event.target.value;
-  localStorage.setItem('language', currentLang);
-  console.log("Language changed to:", currentLang);
-
-  renderRecipes();  // Rerender recipe cards
-  updateUI();       // Update UI sections
-});
-
-
-// ---------- Modal refs ----------
-const overlay = document.getElementById('modalOverlay');
-const modalImage = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalIngredients = document.getElementById('modalIngredients');
-const modalSteps = document.getElementById('modalSteps');
-const closeBtn = document.getElementById('closeBtn');
-const recipeContentEl = document.getElementById('recipeContent');
-const modalImageWrap = document.getElementById('modalImageWrap');
-
-// Optional sections
-const videoContainer = document.getElementById('videoContainer');
-const videoFrameWrap = document.getElementById('videoFrameWrap');
-const modalLocationsList = document.getElementById('modalLocationsList');
-
-// Scroll fades
-const fadeTop = document.querySelector('.fade-top');
-const fadeBottom = document.querySelector('.fade-bottom');
-
-const modalDesc = document.getElementById('modalDesc');
-
-const uiText = {
+/** Centralized i18n content (easy to extend) */
+export const LANGUAGE_TEXT = {
   header: {
-    title: {
-      en: "日本の味覚",
-      ro: "Gusturile Japoniei",
-      ru: "Вкусы Японии"
-    },
+    title: { en: '日本の味覚', ro: 'Gusturile Japoniei', ru: 'Вкусы Японии' },
     subtitle: {
       en: "Discover the art, harmony, and authentic tastes of Japanese cuisine",
       ro: "Descoperă arta, armonia și gusturile autentice ale bucătăriei japoneze",
-      ru: "Откройте искусство, гармонию и подлинные вкусы японской кухни"
-    }
+      ru: "Откройте искусство, гармонию и подлинные вкусы японской кухни",
+    },
   },
   modal: {
-    close: {
-      en: "✕",
-      ro: "✕",
-      ru: "✕"
-    },
-    ingredients: {
-      en: "Ingredients",
-      ro: "Ingrediente",
-      ru: "Ингредиенты"
-    },
-    steps: {
-      en: "Steps",
-      ro: "Pași",
-      ru: "Шаги"
-    },
+    close: { en: '✕', ro: '✕', ru: '✕' },
+    ingredients: { en: 'Ingredients', ro: 'Ingrediente', ru: 'Ингредиенты' },
+    steps: { en: 'Steps', ro: 'Pași', ru: 'Шаги' },
     watchVideo: {
       en: "Watch how it's made:",
-      ro: "Vezi cum se prepară:",
-      ru: "Смотрите, как это готовится:"
+      ro: 'Vezi cum se prepară:',
+      ru: 'Смотрите, как это готовится:',
     },
     locations: {
-      en: "Where to Try It",
-      ro: "Unde Poți Gusta",
-      ru: "Где Попробовать"
-    }
-  }
+      en: 'Where to Try It',
+      ro: 'Unde Poți Gusta',
+      ru: 'Где Попробовать',
+    },
+  },
+  cards: {
+    cta: {
+      en: 'Click to view',
+      ro: 'Apasă pentru a vedea',
+      ru: 'Нажмите для просмотра',
+    },
+    noRestaurantData: {
+      en: 'No restaurant data available.',
+      ro: 'Nu sunt date disponibile.',
+      ru: 'Нет данных о ресторанах.',
+    },
+  },
+  errors: {
+    loadFailedTitle: { en: "Couldn’t load recipes.", ro: 'Nu am putut încărca rețetele.', ru: 'Не удалось загрузить рецепты.' },
+    loadFailedHint: {
+      en: 'If you opened this file directly, start a local server. Otherwise check data/recipes.json.',
+      ro: 'Dacă ai deschis fișierul direct, pornește un server local. Altfel verifică data/recipes.json.',
+      ru: 'Если вы открыли файл напрямую, запустите локальный сервер. Иначе проверьте data/recipes.json.',
+    },
+  },
 };
 
+/* ============================================================================
+   2) APP STATE (single source of truth)
+   - Encapsulates mutable data and current runtime values.
+   ========================================================================== */
+const appState = {
+  recipes: /** @type {Array<any>} */ ([]),
+  lastFocusedCard: /** @type {HTMLButtonElement|null} */ (null),
+  currentLang: localStorage.getItem('language') || 'en',
+  currentImageIndex: 0, // local per modal session (reassigned in openModal)
+};
 
-// ---------- Helpers ----------
-function toEmbedUrl(url) {
+/* ============================================================================
+   3) DOM REFERENCES (resolved once)
+   - Query once; store stable references to avoid repeated lookups.
+   ========================================================================== */
+const DOM = {
+  languageSelect: /** @type {HTMLSelectElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.languageSelect)
+  ),
+  gallery: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.gallery)
+  ),
+  overlay: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.overlay)
+  ),
+  modalImage: /** @type {HTMLImageElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalImage)
+  ),
+  modalTitle: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalTitle)
+  ),
+  modalIngredients: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalIngredients)
+  ),
+  modalSteps: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalSteps)
+  ),
+  modalCloseBtn: /** @type {HTMLButtonElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalCloseBtn)
+  ),
+  recipeContentEl: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.recipeContent)
+  ),
+  modalImageWrap: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalImageWrap)
+  ),
+  videoContainer: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.videoContainer)
+  ),
+  videoFrameWrap: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.videoFrameWrap)
+  ),
+  modalLocationsList: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.modalLocationsList)
+  ),
+  fadeTop: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.fadeTop)
+  ),
+  fadeBottom: /** @type {HTMLElement|null} */ (
+    document.querySelector(APP_CONFIG.selectors.fadeBottom)
+  ),
+  modalDesc: /** @type {HTMLElement|null} */ (document.getElementById('modalDesc')),
+};
+
+/* ============================================================================
+   4) UTILITIES
+   - Small focused helpers. Prefer pure functions; keep side effects obvious.
+   ========================================================================== */
+
+/** Tiny query helpers with typed casts (optional convenience) */
+const qs = (sel, root = document) => root.querySelector(sel);
+const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+/** Create element with safe defaults and a small prop shorthand */
+function createEl(tag, props = {}, children = []) {
+  const el = document.createElement(tag);
+  Object.entries(props).forEach(([k, v]) => {
+    if (k === 'className') el.className = String(v);
+    else if (k === 'dataset' && typeof v === 'object') {
+      Object.entries(v).forEach(([dk, dv]) => { el.dataset[dk] = String(dv); });
+    } else if (k in el) {
+      // @ts-ignore - assign known DOM props (id, src, alt, type, etc.)
+      el[k] = v;
+    } else {
+      el.setAttribute(k, String(v));
+    }
+  });
+  [].concat(children).forEach((c) => {
+    if (c == null) return;
+    el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+  });
+  return el;
+}
+
+/** Defensive text setter */
+function setText(el, text) {
+  if (!el) return;
+  el.textContent = text ?? '';
+}
+
+/** Coerce a YouTube URL into an embeddable URL; return null for non-YT links */
+export function toEmbedUrl(url) {
   try {
     const u = new URL(url);
-    if (u.hostname.includes('youtu.be')) {
-      return `https://www.youtube.com/embed/${u.pathname.slice(1)}`;
-    }
-    if (u.pathname.startsWith('/shorts/')) {
-      return `https://www.youtube.com/embed/${u.pathname.split('/')[2]}`;
-    }
-    if (u.searchParams.get('v')) {
-      return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
-    }
-  } catch {}
+    if (u.hostname.includes('youtu.be')) return `https://www.youtube.com/embed/${u.pathname.slice(1)}`;
+    if (u.pathname.startsWith('/shorts/')) return `https://www.youtube.com/embed/${u.pathname.split('/')[2]}`;
+    if (u.searchParams.get('v')) return `https://www.youtube.com/embed/${u.searchParams.get('v')}`;
+  } catch {
+    // no-op: handled by returning null
+  }
   return null;
 }
 
-function updateScrollFades() {
-  if (!recipeContentEl) return;
-  const atTop = recipeContentEl.scrollTop <= 0;
-  const atBottom =
-    Math.ceil(recipeContentEl.scrollTop + recipeContentEl.clientHeight) >=
-    recipeContentEl.scrollHeight;
+/** Developer logger with feature flag */
+function devLog(...args) {
+  if (APP_CONFIG.features.consoleDebug) console.log('[FoodGallery]', ...args);
+}
 
-  // Drive CSS with vars (cheap + smooth)
+/** Inline error UI renderer (friendly for end users) */
+function renderInlineError(title, hint) {
+  if (!APP_CONFIG.features.inlineErrors || !DOM.gallery) return;
+  DOM.gallery.innerHTML = '';
+  const box = createEl('div', {
+    className: 'error-box',
+    style:
+      'padding:16px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;background:rgba(0,0,0,0.35);color:#fff',
+  }, [
+    createEl('strong', {}, [title]),
+    createEl('br'),
+    createEl('span', {}, [hint]),
+  ]);
+  DOM.gallery.appendChild(box);
+}
+
+/** Scroll fade updater: sets CSS variables used by the fade elements */
+function updateScrollFades() {
+  const scroller = DOM.recipeContentEl;
+  if (!scroller) return;
+  const atTop = scroller.scrollTop <= 0;
+  const atBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
   document.documentElement.style.setProperty('--fade-top-opacity', atTop ? '0' : '1');
   document.documentElement.style.setProperty('--fade-bottom-opacity', atBottom ? '0' : '1');
 }
 
+/** Attach (and reattach safely) the scroll listener for fades */
 function attachScrollFadeListeners() {
-  if (!recipeContentEl) return;
-  recipeContentEl.removeEventListener('scroll', updateScrollFades);
-  recipeContentEl.addEventListener('scroll', updateScrollFades, { passive: true });
-  // Initialize
-  requestAnimationFrame(updateScrollFades);
+  const scroller = DOM.recipeContentEl;
+  if (!scroller) return;
+  scroller.removeEventListener('scroll', updateScrollFades);
+  scroller.addEventListener('scroll', updateScrollFades, { passive: true });
+  requestAnimationFrame(updateScrollFades); // initialize once content is in place
 }
 
+/** Remove all carousel arrows from the modal image*/
 function clearImageArrows() {
-  if (!modalImageWrap) return;
-  modalImageWrap.querySelectorAll('.modal-arrow').forEach((el) => el.remove());
+  if (!DOM.modalImageWrap) return;
+  DOM.modalImageWrap.querySelectorAll('.modal-arrow').forEach((el) => el.remove());
 }
 
+/* ============================================================================
+   5) RENDERING LOGIC
+   - Pure-ish rendering functions. They read from `appState` and `DOM`.
+   ========================================================================== */
+
+/** Render the card grid from `appState.recipes` */
+function renderRecipes() {
+  if (!DOM.gallery) return;
+  DOM.gallery.innerHTML = '';
+
+  const lang = appState.currentLang;
+  const frag = document.createDocumentFragment();
+
+  appState.recipes.forEach((recipe) => {
+    const title = recipe.title?.[lang] ?? recipe.title?.en ?? '';
+    const desc = recipe.description?.[lang] ?? '';
+    const alt = recipe.alt?.[lang] ?? title;
+    const thumb = recipe.images?.[0] ?? recipe.image ?? '';
+
+    const card = createEl('button', {
+      className: 'card',
+      type: 'button',
+      'aria-label': title,
+    }, [
+      createEl('div', { className: 'thumb' }, [
+        createEl('img', {
+          src: thumb,
+          alt,
+          decoding: 'async',
+          loading: 'lazy',
+        }),
+      ]),
+      createEl('div', { className: 'card-info' }, [
+        createEl('div', { className: 'title' }, [title]),
+        createEl('div', { className: 'desc' }, [desc]),
+        createEl('div', { className: 'sub' }, [
+          LANGUAGE_TEXT.cards.cta[lang] ?? LANGUAGE_TEXT.cards.cta.en,
+        ]),
+      ]),
+    ]);
+
+    // Remember focus origin; open modal
+    card.addEventListener('click', () => {
+      appState.lastFocusedCard = card;
+      openModal(recipe.id);
+    });
+
+    frag.appendChild(card);
+  });
+
+  DOM.gallery.appendChild(frag);
+}
+
+/** Update static UI elements that are not recipe-specific via [data-ui] */
+function updateUIStrings() {
+  const lang = appState.currentLang;
+  qsa('[data-ui]').forEach((el) => {
+    const path = el.getAttribute('data-ui')?.split('.') ?? [];
+    // Traverse LANGUAGE_TEXT using the dot path in data-ui
+    let ref = LANGUAGE_TEXT;
+    for (const key of path) {
+      if (ref && typeof ref === 'object' && key in ref) {
+        ref = ref[key];
+      } else {
+        ref = null;
+        break;
+      }
+    }
+    const text = (ref && typeof ref === 'object' && ref[lang]) ? ref[lang] : null;
+    if (typeof text === 'string') setText(el, text);
+  });
+
+  // Keep the dropdown in sync with state
+  if (DOM.languageSelect) DOM.languageSelect.value = lang;
+}
+
+/** Build the locations list inside the modal, with null-safe fallbacks */
+function renderLocations(locations = []) {
+  if (!DOM.modalLocationsList) return;
+  const lang = appState.currentLang;
+  DOM.modalLocationsList.innerHTML = '';
+
+  if (!locations.length) {
+    DOM.modalLocationsList.appendChild(
+      createEl('li', {}, [LANGUAGE_TEXT.cards.noRestaurantData[lang] ?? LANGUAGE_TEXT.cards.noRestaurantData.en])
+    );
+    return;
+  }
+
+  const frag = document.createDocumentFragment();
+  locations.forEach((place) => {
+    const websiteLabel =
+      lang === 'en' ? 'Visit Website' : lang === 'ro' ? 'Vizitează site-ul' : 'Посетить сайт';
+    const mapLabel =
+      lang === 'en' ? 'View on Map' : lang === 'ro' ? 'Vezi pe hartă' : 'Посмотреть на карте';
+
+    const li = createEl('li');
+    li.innerHTML = `
+      <strong>${place.name ?? ''}</strong><br>
+      <span>${place.address ?? 'Address not available'}</span><br>
+      ${place.website ? `<a href="${place.website}" target="_blank" class="location-link website-link">${websiteLabel}</a><br>` : ''}
+      ${place.link ? `<a href="${place.link}" target="_blank" class="location-link map-link">${mapLabel}</a>` : ''}
+    `;
+    frag.appendChild(li);
+  });
+
+  DOM.modalLocationsList.appendChild(frag);
+}
+
+/** Render/refresh the modal for a given recipe ID */
 function openModal(id) {
-  const recipe = recipes.find((x) => x.id === id);
-  if (!recipe) return;
+  const recipe = appState.recipes.find((x) => x.id === id);
+  if (!recipe || !DOM.overlay) return;
 
-  // ✅ Get content in the current language
-  const title = recipe.title?.[currentLang] || recipe.title?.en || "";
-  const description = recipe.description?.[currentLang] || recipe.description?.en || "";
-  const ingredients = recipe.ingredients?.[currentLang] || [];
-  const steps = recipe.steps?.[currentLang] || [];
-  const locations = recipe.locations || []; // locations usually language-neutral
-  const altText = recipe.alt?.[currentLang] || title;
+  const lang = appState.currentLang;
+  const title = recipe.title?.[lang] ?? recipe.title?.en ?? '';
+  const description = recipe.description?.[lang] ?? recipe.description?.en ?? '';
+  const ingredients = recipe.ingredients?.[lang] ?? [];
+  const steps = recipe.steps?.[lang] ?? [];
+  const locations = recipe.locations ?? [];
+  const altText = recipe.alt?.[lang] ?? title;
 
-
-
-  // ---------- Image Carousel ----------
+  // Set up image(s) & minimal carousel
   clearImageArrows();
+  const imgs = (recipe.images?.length ? recipe.images : [recipe.image]).filter(Boolean);
+  appState.currentImageIndex = 0;
 
-  const imgs = recipe.images && recipe.images.length ? recipe.images : [recipe.image];
-  let currentImageIndex = 0;
+  if (DOM.modalImage) {
+    DOM.modalImage.src = imgs[appState.currentImageIndex] ?? '';
+    DOM.modalImage.alt = altText;
+  }
 
-  modalImage.src = imgs[currentImageIndex];
-  modalImage.alt = altText;
-
-  if (imgs.length > 1) {
-    const leftArrow = document.createElement('div');
-    leftArrow.className = 'modal-arrow left';
-    leftArrow.textContent = '‹';
-
-    const rightArrow = document.createElement('div');
-    rightArrow.className = 'modal-arrow right';
-    rightArrow.textContent = '›';
+  if (imgs.length > 1 && DOM.modalImageWrap && DOM.modalImage) {
+    const leftArrow = createEl('div', { className: 'modal-arrow left' }, ['‹']);
+    const rightArrow = createEl('div', { className: 'modal-arrow right' }, ['›']);
 
     const go = (dir) => {
-      currentImageIndex = (currentImageIndex + dir + imgs.length) % imgs.length;
-      modalImage.src = imgs[currentImageIndex];
-      modalImage.alt = altText;
+      appState.currentImageIndex = (appState.currentImageIndex + dir + imgs.length) % imgs.length;
+      DOM.modalImage.src = imgs[appState.currentImageIndex];
+      DOM.modalImage.alt = altText;
     };
 
-    leftArrow.addEventListener('click', (e) => {
-      e.stopPropagation();
-      go(-1);
-    });
-    rightArrow.addEventListener('click', (e) => {
-      e.stopPropagation();
-      go(1);
-    });
+    leftArrow.addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+    rightArrow.addEventListener('click', (e) => { e.stopPropagation(); go(1); });
 
-    modalImageWrap.appendChild(leftArrow);
-    modalImageWrap.appendChild(rightArrow);
+    DOM.modalImageWrap.appendChild(leftArrow);
+    DOM.modalImageWrap.appendChild(rightArrow);
   }
 
-  // ---------- Populate Right Column ----------
-  // Title & description
-  modalTitle.textContent = title;
-  modalDesc.textContent = description;
+  // Populate right column
+  setText(DOM.modalTitle, title);
+  setText(DOM.modalDesc, description);
 
-  // Ingredients
-  modalIngredients.innerHTML = '';
-  ingredients.forEach((ing) => {
-    const li = document.createElement('li');
-    li.textContent = ing;
-    modalIngredients.appendChild(li);
-  });
+  if (DOM.modalIngredients) {
+    DOM.modalIngredients.innerHTML = '';
+    (ingredients || []).forEach((ing) => DOM.modalIngredients.appendChild(createEl('li', {}, [ing])));
+  }
+  if (DOM.modalSteps) {
+    DOM.modalSteps.innerHTML = '';
+    (steps || []).forEach((st) => DOM.modalSteps.appendChild(createEl('li', {}, [st])));
+  }
 
-  // Steps
-  modalSteps.innerHTML = '';
-  steps.forEach((st) => {
-    const li = document.createElement('li');
-    li.textContent = st;
-    modalSteps.appendChild(li);
-  });
-
-  // ---------- Video section ----------
-  videoFrameWrap.innerHTML = '';
-  if (recipe.video) {
-    const embedUrl = toEmbedUrl(recipe.video);
+  // Video section
+  if (DOM.videoFrameWrap && DOM.videoContainer) {
+    DOM.videoFrameWrap.innerHTML = '';
+    const embedUrl = recipe.video ? toEmbedUrl(recipe.video) : null;
     if (embedUrl) {
-      const iframe = document.createElement('iframe');
-      iframe.src = embedUrl;
-      iframe.width = '100%';
-      iframe.height = '315';
-      iframe.frameBorder = '0';
-      iframe.allow =
-        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      videoFrameWrap.appendChild(iframe);
-      videoContainer.style.display = 'block';
-    } else {
-      videoContainer.style.display = 'none';
-    }
-  } else {
-    videoContainer.style.display = 'none';
-  }
-
-  // ---------- Locations section ----------
-  if (modalLocationsList) {
-    modalLocationsList.innerHTML = '';
-    if (locations.length) {
-      locations.forEach((place) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <strong>${place.name}</strong><br>
-          <span>${place.address || 'Address not available'}</span><br>
-          ${place.website ? `<a href="${place.website}" target="_blank" class="location-link website-link">${currentLang === 'en' ? 'Visit Website' : currentLang === 'ro' ? 'Vizitează site-ul' : 'Посетить сайт'}</a><br>` : ''}
-          ${place.link ? `<a href="${place.link}" target="_blank" class="location-link map-link">${currentLang === 'en' ? 'View on Map' : currentLang === 'ro' ? 'Vezi pe hartă' : 'Посмотреть на карте'}</a>` : ''}
-        `;
-        modalLocationsList.appendChild(li);
+      const iframe = createEl('iframe', {
+        src: embedUrl,
+        width: '100%',
+        height: '315',
+        frameBorder: '0',
+        allow:
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+        allowFullscreen: true,
       });
+      DOM.videoFrameWrap.appendChild(iframe);
+      DOM.videoContainer.style.display = 'block';
     } else {
-      modalLocationsList.innerHTML = `<li>${currentLang === 'en' ? 'No restaurant data available.' : currentLang === 'ro' ? 'Nu sunt date disponibile.' : 'Нет данных о ресторанах.'}</li>`;
+      DOM.videoContainer.style.display = 'none';
     }
   }
 
-  // ---------- Show modal ----------
-  overlay.classList.add('open');
-  overlay.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('modal-open');
+  // Locations
+  renderLocations(locations);
 
-  closeBtn?.focus();
+  // Show modal
+  DOM.overlay.classList.add('open');
+  DOM.overlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add(APP_CONFIG.a11y.modalOpenBodyClass);
+  DOM.modalCloseBtn?.focus();
 
+  // Scroll fades
   attachScrollFadeListeners();
   updateScrollFades();
 }
 
-
+/** Close modal & restore state/focus */
 function closeModal() {
-  overlay.classList.remove('open');
-  overlay.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('modal-open');
+  if (!DOM.overlay) return;
+  DOM.overlay.classList.remove('open');
+  DOM.overlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove(APP_CONFIG.a11y.modalOpenBodyClass);
 
-  // Clean up UI bits
   clearImageArrows();
-
-  // Restore focus
-  if (lastFocusedCard) lastFocusedCard.focus();
+  appState.lastFocusedCard?.focus?.();
 }
 
-// ---------- Close interactions ----------
-closeBtn?.addEventListener('click', closeModal);
-
-// Close when clicking the overlay background (but not the modal itself)
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) closeModal();
-});
-
-// Close on Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
-});
-
-// ---------- Focus trap (a11y) ----------
-const focusables = () =>
-  overlay.querySelectorAll('button, [href], iframe, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Tab' || !overlay.classList.contains('open')) return;
-  const list = Array.from(focusables());
-  if (!list.length) return;
-  const first = list[0],
-    last = list[list.length - 1];
-
-  if (e.shiftKey && document.activeElement === first) {
-    last.focus();
-    e.preventDefault();
-  } else if (!e.shiftKey && document.activeElement === last) {
-    first.focus();
-    e.preventDefault();
-  }
-});
-
-// Keep fades correct on resize/orientation change
-window.addEventListener('resize', () => requestAnimationFrame(updateScrollFades));
-
-// ---------- Load data ----------
-fetch('data/recipes.json')
-  .then((r) => (r.ok ? r.json() : Promise.reject(r)))
-  .then((data) => {
-    recipes = data;
-    renderRecipes();  
-    updateUI();
-  })
-  .catch((err) => {
-    console.error('Error loading recipes:', err);
-    const g = document.getElementById('gallery');
-    g.innerHTML = `<div style="padding:16px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;background:rgba(0,0,0,0.35);color:#fff">
-      <strong>Couldn’t load recipes.</strong><br>
-      If you’re opening this file directly, start a local server. Otherwise check <code>data/recipes.json</code>.
-    </div>`;
+/* ============================================================================
+   6) EVENT LISTENERS & INTERACTION
+   - Keep listener registration central to avoid duplicates.
+   ========================================================================== */
+function bindGlobalEvents() {
+  // Language changes update state and rerender static + dynamic UI
+  DOM.languageSelect?.addEventListener('change', (event) => {
+    const val = /** @type {HTMLSelectElement} */ (event.target).value;
+    appState.currentLang = val;
+    localStorage.setItem('language', val);
+    devLog('Language changed to:', val);
+    renderRecipes();
+    updateUIStrings();
   });
 
+  // Modal close button
+  DOM.modalCloseBtn?.addEventListener('click', closeModal);
 
-// ✅ Render recipe cards dynamically
-function renderRecipes() {
-  const container = document.querySelector('.grid');
-  container.innerHTML = ''; // Clear old recipes
-
-  recipes.forEach(recipe => {
-    const card = document.createElement('button');
-    card.className = 'card';
-    card.setAttribute('data-id', recipe.id);
-    card.setAttribute('aria-label', recipe.title[currentLang] || "");
-    card.type = "button";
-
-    card.innerHTML = `
-      <div class="thumb">
-        <img src="${recipe.images[0]}" 
-             alt="${recipe.alt?.[currentLang] || recipe.title[currentLang]}" 
-             decoding="async" 
-             loading="lazy">
-      </div>
-      <div class="card-info">
-        <div class="title">${recipe.title[currentLang]}</div>
-        <div class="desc">${recipe.description[currentLang]}</div>
-        <div class="sub">
-          ${currentLang === 'en' ? 'Click to view' : currentLang === 'ro' ? 'Apasă pentru a vedea' : 'Нажмите для просмотра'}
-        </div>
-      </div>
-    `;
-
-    // ✅ Add click event for modal
-    // ✅ Add click event for modal + remember last focused card
-    card.addEventListener('click', () => {
-      lastFocusedCard = card; // ✅ this stores which card opened the modal
-      openModal(recipe.id);   // ✅ this opens the modal as before
-    });
-
-    container.appendChild(card);
+  // Close when clicking outside the modal (overlay only)
+  DOM.overlay?.addEventListener('click', (e) => {
+    if (e.target === DOM.overlay) closeModal();
   });
-}
 
-// ✅ Update non-recipe UI elements (titles, modal labels, etc.)
-function updateUI() {
-  document.querySelectorAll('[data-ui]').forEach(el => {
-    const keyPath = el.getAttribute('data-ui').split('.');
-    let textObj = uiText;
+  // Keyboard interactions: ESC to close, TAB to trap focus
+  document.addEventListener('keydown', (e) => {
+    if (!DOM.overlay?.classList.contains('open')) return;
 
-    keyPath.forEach(key => {
-      if (textObj[key]) textObj = textObj[key];
-    });
+    // Escape closes modal
+    if (e.key === 'Escape') closeModal();
 
-    if (textObj[currentLang]) {
-      el.textContent = textObj[currentLang];
+    // Focus trap within modal
+    if (e.key === 'Tab') {
+      const focusables = DOM.overlay.querySelectorAll(APP_CONFIG.a11y.focusTrapSelectors);
+      if (!focusables.length) return;
+
+      const list = Array.from(focusables);
+      const first = list[0];
+      const last = list[list.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        last.focus();
+        e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        first.focus();
+        e.preventDefault();
+      }
     }
   });
+
+  // Keep fades correct on resize/orientation change
+  window.addEventListener('resize', () => requestAnimationFrame(updateScrollFades));
 }
+
+/* ============================================================================
+   7) INITIALIZATION & DATA LOADING
+   - Single public entrypoint. Call this after DOM is ready or import in apps.
+   ========================================================================== */
+export async function initFoodGallery(customConfig = {}) {
+  // Allow overriding config (e.g., different dataUrl in tests or deployments)
+  Object.assign(APP_CONFIG, customConfig);
+
+  // Sync dropdown with current language
+  if (DOM.languageSelect) DOM.languageSelect.value = appState.currentLang;
+
+  // Load data with graceful error UI
+  try {
+    const res = await fetch(APP_CONFIG.dataUrl);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error('Invalid data shape: expected an array');
+
+    appState.recipes = data;
+    renderRecipes();
+    updateUIStrings();
+  } catch (err) {
+    console.error('Error loading recipes:', err);
+    const lang = appState.currentLang;
+    renderInlineError(
+      LANGUAGE_TEXT.errors.loadFailedTitle[lang] ?? LANGUAGE_TEXT.errors.loadFailedTitle.en,
+      LANGUAGE_TEXT.errors.loadFailedHint[lang] ?? LANGUAGE_TEXT.errors.loadFailedHint.en
+    );
+  }
+
+  // Bind once
+  bindGlobalEvents();
+  devLog('Initialized');
+}
+
+/* Default export for convenience in most bundlers */
+export default initFoodGallery;

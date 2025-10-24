@@ -28,7 +28,7 @@
   </header>
 
   <!-- Gallery Grid -->
-  <div class="grid" id="gallery" aria-live="polite"></div>
+  <div class="grid" aria-live="polite"></div>
 
   <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
@@ -44,37 +44,30 @@
         <button class="close-btn" id="closeBtn" aria-label="Close" data-ui="modal.close">✕</button>
 
         <div class="recipe-content" id="recipeContent">
-          <!-- Title from JSON -->
           <h2 id="modalTitle">Recipe Title</h2>
-          <!-- Description (new) -->
           <p id="modalDesc"></p>
 
-          <!-- Ingredients -->
           <div class="ingredients">
             <div class="section-title" data-ui="modal.ingredients">Ingredients</div>
             <ul id="modalIngredients"></ul>
           </div>
 
-          <!-- Steps -->
           <div class="steps">
             <div class="section-title" data-ui="modal.steps">Steps</div>
             <ol id="modalSteps"></ol>
           </div>
 
-          <!-- Video Section -->
           <div id="videoContainer" class="video-container" style="margin-top: 14px; display: none;">
             <h3 data-ui="modal.watchVideo">Watch how it's made:</h3>
             <div id="videoFrameWrap"></div>
           </div>
 
-          <!-- Locations -->
           <div class="locations" id="modalLocations">
             <div class="section-title" data-ui="modal.locations">Where to Try It</div>
             <ul id="modalLocationsList"></ul>
           </div>
         </div>
 
-        <!-- Scroll Indicators -->
         <div class="scroll-fade fade-top" aria-hidden="true"></div>
         <div class="scroll-fade fade-bottom" aria-hidden="true"></div>
       </div>
@@ -82,6 +75,10 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Initialize JavaScript Module -->
+  <script type="module">
+    import initFoodGallery from './script.js';
+    initFoodGallery();
+  </script>
 </body>
 </html>

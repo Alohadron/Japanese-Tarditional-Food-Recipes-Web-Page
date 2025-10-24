@@ -1,106 +1,108 @@
+/* ==========================================================================
+   1) DESIGN SYSTEM — CSS VARIABLES (Semantic, scalable, theme-ready)
+   --------------------------------------------------------------------------
+   Change values here to theme the entire UI consistently.
+   ========================================================================== */
 :root {
+  /* ——— Brand & Base Colors ——— */
+  --color-bg-page: #000000;                         /* page backdrop base */
+  --color-text-primary: #e6eef6;                    /* main text on dark bg */
+  --color-text-contrast: #ffffff;                   /* high-contrast text */
+  --color-accent: #ff7a59;                          /* key brand accent */
+  --color-accent-soft: rgba(236, 111, 8, 0.8);      /* accent with alpha (subtitle/card bg) */
+
+  /* ——— Surfaces ——— */
+  --color-surface-card: rgba(236, 111, 8, 0.8);     /* card background overlay */
+  --color-surface-modal: #553b36;                   /* modal background */
+  --color-surface-thumb: #111111;                   /* image placeholder bg */
+
+  /* ——— Overlays & Effects ——— */
+  --overlay-bg: rgba(10, 12, 20, 0.45);             /* overlay veil tint */
+  --overlay-blur: 8px;                               /* overlay blur intensity */
+  --overlay-saturate: 110%;                          /* overlay color pop */
+  --modal-radius: 12px;                              /* modal roundness */
+
+  /* ——— Borders ——— */
+  --border-card: rgba(255, 255, 255, 0.08);
+  --border-modal: rgba(255, 255, 255, 0.06);
+  --border-select: rgba(255, 255, 255, 0.3);
+  --border-select-focus: var(--color-accent);
+
+  /* ——— Typography ——— */
+  --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-brand: 'Sawarabi Mincho', serif;
+
+  /* ——— Shadows ——— */
+  --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover-outer: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+  --shadow-card-hover-inner: 0 0 20px 4px rgba(255, 255, 255, 0.6);
+  --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.6);
+  --shadow-thumb: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-arrow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+  /* ——— Transitions ——— */
+  --transition-fast: 0.15s ease;
+  --transition-med: 0.25s ease;
+  --transition-slow: 0.35s ease;
+
+  /* ——— Layout & Spacing ——— */
   --gap: 12px;
   --card-radius: 10px;
-  --accent: #ff7a59;
-  --text: #e6eef6;
 
-  /* overlay + effects */
-  --overlay-bg: rgba(10,12,20,0.45);
-  --overlay-blur: 8px;
-  --modal-radius: 12px;
-
-  /* scroll fades */
+  /* ——— Scroll Fades (driven by JS toggling opacities) ——— */
   --fade-size: 18px;
   --fade-top-opacity: 0;     /* JS toggles to 1 when not at top */
   --fade-bottom-opacity: 0;  /* JS toggles to 1 when not at bottom */
+
+  /* ——— Links (locations) ——— */
+  --color-link-website: #EFA8B8;  /* Sakura Pink */
+  --color-link-map: #A3D5FF;      /* Water Blue */
+  --color-link-hover: #ff8c00;    /* Kurenai Crimson */
+
+  /* ——— Gradients / Fades ——— */
+  --fade-dark-35: rgba(0, 0, 0, 0.35);
+
+  /* ——— Language Select UI ——— */
+  --select-bg: rgba(255, 255, 255, 0.15);
+  --select-bg-hover: rgba(255, 255, 255, 0.3);
+  --select-bg-focus: rgba(255, 255, 255, 0.4);
+
+  /* ——— Subtitle pill ——— */
+  --subtitle-bg: var(--color-accent-soft);
 }
 
+/* ==========================================================================
+   2) GLOBAL RESETS & BASE STYLES
+   --------------------------------------------------------------------------
+   Keep resets minimal; rely on variables for theming and consistency.
+   ========================================================================== */
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
   padding: 0;
-  background-image: url('patterns/pexels-dibert-2169222.jpg');
+  background-image: url('patterns/pexels-dibert-2169222.jpg'); /* decorative: fixed hero backdrop */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-page); /* solid fallback under image */
 }
 
 body.modal-open { overflow: hidden; }
 
-.language-switcher {
-  position: absolute; /* stays in the layout, relative to its container */
-  top: 20px;
-  right: 20px;
-}
-
-#language-select {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px) saturate(140%);
-  color: white;
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  outline: none;
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.15s ease;
-}
-
-#language-select:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: #ffffff;
-}
-
-#language-select:focus {
-  border-color: var(--accent, #ff7a59);
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(1.03);
-}
-
-#language-select option {
-  background-color: #ffffff;
-  color: #222;
-}
-
-
-
-/* Branding */
-h1, h2, .title {
-  font-family: 'Sawarabi Mincho', serif;
-  color: #ffffff;
-  letter-spacing: 1px;
-}
-h1 {
-  font-size: clamp(48px, 6vw, 96px); /* responsive modern sizing */
-  letter-spacing: 3px;
-}
-
-.hero { text-align: center; padding: 40px 0 20px;
- }
-.subtitle {
-  font-size: 16px;
-  color: #ffffff;
-  margin-top: 8px;
-  font-style: italic;
-  background-color: #f96c2fb8;
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  border-color: white; /* White border on hover */
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8),
-              0 0 20px 4px rgba(255, 255, 255, 0.6);
-}
-
-/* ===== Grid ===== */
+/* ==========================================================================
+   3) LAYOUT
+   --------------------------------------------------------------------------
+   Grid is simple and responsive; clamp() keeps paddings fluid.
+   ========================================================================== */
 .grid {
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(3, 1fr);  /* ✅ 3 equal columns on desktop */
-  align-items: stretch;                   /* ✅ Match card heights in each row */
+  grid-template-columns: repeat(3, 1fr);    /* desktop: dense gallery */
+  align-items: stretch;                      /* match heights per row */
   padding: clamp(16px, 4vw, 48px);
   margin-left: auto;
   margin-right: auto;
@@ -108,94 +110,155 @@ h1 {
 }
 
 @media (max-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns on tablets */
-  }
+  .grid { grid-template-columns: repeat(2, 1fr); } /* tablets */
 }
 
 @media (max-width: 700px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr); /* ✅ 1 column on mobile */
-  }
+  .grid { grid-template-columns: repeat(1, 1fr); } /* mobile */
 }
 
-/* ===== Cards ===== */
+/* ==========================================================================
+   4) COMPONENTS
+   ========================================================================== */
+
+/* ——— 4.1 Language Switcher ———
+   Compact, high-contrast control floating over the hero. */
+.language-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#language-select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-select);
+  background: var(--select-bg);
+  backdrop-filter: blur(var(--overlay-blur)) saturate(140%);
+  color: var(--color-text-contrast);
+  font-size: 14px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--transition-slow), border-color var(--transition-slow), transform var(--transition-fast);
+}
+#language-select:hover {
+  background: var(--select-bg-hover);
+  border-color: var(--color-text-contrast);
+}
+#language-select:focus {
+  border-color: var(--border-select-focus);
+  background: var(--select-bg-focus);
+  transform: scale(1.03);
+}
+#language-select option {
+  background-color: var(--color-text-contrast);
+  color: #222; /* high-contrast on white options list; left literal as semantic var would reduce clarity here */
+}
+
+/* ——— 4.2 Header / Hero ———
+   Large typographic lockup over the photographic background. */
+h1, h2, .title {
+  font-family: var(--font-brand);
+  color: var(--color-text-contrast);
+  letter-spacing: 1px;
+}
+h1 {
+  font-size: clamp(48px, 6vw, 96px);
+  letter-spacing: 3px;
+}
+.hero {
+  text-align: center;
+  padding: 40px 0 20px;
+}
+.subtitle {
+  font-size: 16px;
+  color: var(--color-text-contrast);
+  margin-top: 8px;
+  font-style: italic;
+  background-color: var(--subtitle-bg);
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-color: var(--color-text-contrast); /* visual note on hover glow */
+  box-shadow: var(--shadow-card-hover-outer), var(--shadow-card-hover-inner);
+}
+
+/* ——— 4.3 Cards ———
+   Media-first tiles with readable content and subtle elevation. */
 .card {
   position: relative;
-  background: #f96c2fb8;
   border-radius: var(--card-radius);
-  border: 2px solid transparent;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  width: 100%;               /* ✅ Fits full column width */
-  margin: 0 0 var(--gap);    /* ✅ Adds bottom spacing between cards */
-  display: flex;              /* ✅ allow internal layout control */
-  flex-direction: column;     /* ✅ stack image and content vertically */
-  height: 100%;               /* ✅ ensure card fills grid row height */
+  width: 100%;
+  margin: 0 0 var(--gap);
+  display: flex;
+  flex-direction: column;   /* image over content stack */
+  height: 100%;
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  background: var(--color-surface-card);
+  background-blend-mode: overlay;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color var(--transition-med);
 }
-
 .card:hover {
   transform: translateY(-3px);
-  border-color: white; /* White border on hover */
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8),
-              0 0 20px 4px rgba(255, 255, 255, 0.6);
+  border-color: var(--color-text-contrast);
+  box-shadow: var(--shadow-card-hover-outer), var(--shadow-card-hover-inner);
 }
-
 .thumb {
   width: 100%;
-  aspect-ratio: 3 / 4;  /* ✅ Taller image */
+  aspect-ratio: 3 / 4;   /* taller editorial crops */
   overflow: hidden;
-  background: #111;
+  background: var(--color-surface-thumb);
   border-radius: 4px;
   flex: 0 0 auto;
+  box-shadow: var(--shadow-thumb);
 }
-
-
-.thumb img { 
-  width: 100%; height: 100%; object-fit: cover; display: block; 
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
 
 .card-info {
-  display: flex; 
-  flex-direction: column; align-items: flex-start;
-  padding: clamp(10px, 1.5vw, 16px);
-  background: rgba(255,255,255,0.02);
-  min-height: 90px;
-  flex: 1 1 auto;          /* ✅ card content takes remaining space */
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(10px, 1.5vw, 16px);
+  background: rgba(255, 255, 255, 0.02); /* ultra subtle overlay; keeping literal for minute transparency intent */
+  min-height: 90px;
+  flex: 1 1 auto;
   justify-content: flex-start;
 }
-.title { font-size: clamp(15px, 1.6vw, 20px); font-weight: 600; margin-bottom: 4px; color: floralwhite; }
+.title {
+  font-size: clamp(15px, 1.6vw, 20px);
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: floralwhite; /* visually intentional; can be converted if you want strict semantic palette */
+}
 .card-info .desc {
   font-size: clamp(12px, 1.1vw, 15px);
-  color: #fcfcfc;
+  color: #fcfcfc;          /* near-white for subtle contrast difference */
   margin-bottom: 6px;
   line-height: 1.4;
   text-align: left;
   display: block;
-  overflow-wrap: anywhere;  /* ✅ Prevent long words breaking layout */
+  overflow-wrap: anywhere; /* prevent long words from breaking layout */
 }
-
 .sub {
   font-size: clamp(10px, 1vw, 13px);
-  color: #000;
-  margin-top: 6px;     /* ✅ more breathing room */
+  color: #000;             /* black for contrast on warm surface */
+  margin-top: 6px;
   white-space: normal;
   display: block;
 }
+html[lang="ru"] .sub { font-size: 11px; } /* accommodate longer words */
 
-html[lang="ru"] .sub {
-  font-size: 11px;  /* slightly smaller for longer words */
-}
-
-
-
-/* ============================
-   MODAL OVERLAY (Glass Effect)
-   ============================ */
+/* ——— 4.4 Modal Overlay ———
+   Glassy overlay that gates background interactions. */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -206,65 +269,59 @@ html[lang="ru"] .sub {
   padding: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
-  background: rgba(10, 12, 20, 0.45);            /* subtle dark tint */
-  backdrop-filter: blur(8px) saturate(110%);     /* modern glass blur */
-  -webkit-backdrop-filter: blur(8px) saturate(110%);
+  transition: opacity var(--transition-slow);
+  background: var(--overlay-bg);
+  backdrop-filter: blur(var(--overlay-blur)) saturate(var(--overlay-saturate));
+  -webkit-backdrop-filter: blur(var(--overlay-blur)) saturate(var(--overlay-saturate));
 }
 .modal-overlay.open {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* ============================
-   MODAL CONTAINER (Flex Layout)
-   50% Image | 50% Recipe Content
-   ============================ */
+/* ——— 4.5 Modal Container ———
+   50/50 split layout; image on left, content on right. */
 .modal {
   transform: scale(0.95);
   opacity: 0;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
   width: 100%;
   max-width: min(960px, 90vw);
   max-height: 90vh;
-  height: 90vh;                        /* Ensures full modal height is used */
-  background: #553b36;
-  background-clip: border-box;         /* Prevents gradient edge line */
-  border-radius: 12px;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.06);
-  overflow: hidden;                    /* Clips child content cleanly */
-  display: flex;                       /* 🎯 Replaces grid for consistent 50/50 layout */
+  height: 90vh;                    /* ensures full modal height usage */
+  background: var(--color-surface-modal);
+  background-clip: border-box;     /* prevents gradient edge line */
+  border-radius: var(--modal-radius);
+  box-shadow: var(--shadow-modal);
+  border: 1px solid var(--border-modal);
+  overflow: hidden;                /* clean content clipping */
+  display: flex;                   /* consistent 50/50 split */
 }
 .modal-overlay.open .modal {
   transform: scale(1);
   opacity: 1;
 }
 
-/* ============================
-   IMAGE SECTION (Left Pane)
-   ============================ */
+/* ——— 4.6 Modal Image Pane ———
+   Full-bleed media with optional carousel arrows. */
 .img-wrap {
   flex: 1 1 50%;
   position: relative;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  padding: 0;              /* Make sure no padding interferes */
+  padding: 0;
   margin: 0;
-  background: #000;        /* Optional: prevents any white gaps */
+  background: #000;                /* absolute black: prevents halo gaps */
 }
-
 .img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* Fills entire area while preserving aspect ratio */
-  display: block;          /* Removes unexpected inline spacing */
+  object-fit: cover;               /* fill area while preserving ratio */
+  display: block;
 }
 
-/* ============================
-   CAROUSEL ARROWS (Inside Image)
-   ============================ */
+/* Carousel arrows (appear on hover to reduce clutter) */
 .modal-arrow {
   position: absolute;
   top: 50%;
@@ -273,134 +330,120 @@ html[lang="ru"] .sub {
   height: 48px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.35);
-  color: #fff;
-  font-size: 32px;              /* Ensures icon is properly sized */
-  line-height: 1;              /* Centers icon vertically */
-  display: flex;               /* ✅ Perfect centering */
+  color: var(--color-text-contrast);
+  font-size: 32px;      /* icon size */
+  line-height: 1;       /* vertical centering with flex */
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   user-select: none;
-  opacity: 0;                  /* Hidden by default */
-  transition: 
-    opacity 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+  opacity: 0;           /* hidden until user intention (hover) */
+  transition:
+    opacity var(--transition-med),
+    transform var(--transition-med),
+    box-shadow var(--transition-med),
+    background var(--transition-med);
 }
-.img-wrap:hover .modal-arrow {
-  opacity: 1;                 /* Fade in only when hovering over image */
-}
+.img-wrap:hover .modal-arrow { opacity: 1; }
 .modal-arrow:hover {
-  transform: translateY(-50%) scale(1.08);   /* Smooth hover scale */
-  background: rgba(0, 0, 0, 0.55);           /* Darker on hover */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);    /* Soft glow effect */
+  transform: translateY(-50%) scale(1.08);
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: var(--shadow-arrow-hover);
 }
-.modal-arrow.left {
-  left: 16px;
-}
-.modal-arrow.right {
-  right: 16px;
-}
+.modal-arrow.left { left: 16px; }
+.modal-arrow.right { right: 16px; }
 
-/* ============================
-   RECIPE PANEL (Right Pane)
-   Scrollable Content Area
-   ============================ */
+/* ——— 4.7 Modal Content Pane ———
+   Scrollable content area with fade hints (see Utilities). */
 .recipe {
-  flex: 1 1 50%;             /* Matches image width */
+  flex: 1 1 50%;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: clamp(18px, 2vw, 28px);
-  color: var(--text);
-  overflow: hidden;          /* Only the inner content should scroll */
+  color: var(--color-text-primary);
+  overflow: hidden;     /* only inner content should scroll */
   text-align: left;
 }
-
-/* Scrollable content wrapper */
 .recipe-content {
-  flex: 1 1 auto;           /* Take remaining height */
-  min-height: 0;            /* ✅ Critical for scroll to work */
+  flex: 1 1 auto;       /* take remaining height */
+  min-height: 0;        /* critical for inner scroll to work */
   overflow-y: auto;
-  padding-right: 8px;       /* Prevent scrollbar overlap */
+  padding-right: 8px;   /* avoid scrollbar overlap with text */
   -webkit-overflow-scrolling: touch;
 }
 
-/* ============================
-   CLOSE BUTTON (Blurred Modern Style)
-   ============================ */
+/* Close button: subtle glass chip that stays discoverable */
 .close-btn {
   position: absolute;
-  top: 25px;                     /* Inside padding zone */
+  top: 25px;
   right: 50px;
   z-index: 10;
-  background: rgba(0,0,0,0.3);   /* Transparent blurred background */
+  background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
   padding: 6px 10px;
   border-radius: 6px;
-  color: #fff;
+  color: var(--color-text-contrast);
   font-size: 20px;
   border: none;
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  transition: background var(--transition-med), transform var(--transition-med), color var(--transition-med);
 }
 .close-btn:hover {
-  background: rgba(0,0,0,0.5);
-  color: var(--accent);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--color-accent);
   transform: scale(1.05);
 }
 
-/* ===============================
-   FADE SHADOWS FOR SCROLL INDICATION
-   (JS toggles opacity)
-   =============================== */
+/* ——— 4.8 Links (Locations) ———
+   Distinct hues for website vs map to convey action types. */
+.location-link.website-link {
+  color: var(--color-link-website);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+.location-link.map-link {
+  color: var(--color-link-map);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+.location-link:hover,
+.location-link:focus {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   5) UTILITIES & RESPONSIVENESS
+   --------------------------------------------------------------------------
+   Helper visuals and responsive overrides for stacked modal.
+   ========================================================================== */
+
+/* Scroll fade hints (JS toggles the two opacity vars above) */
 .scroll-fade {
   position: absolute;
   left: 0;
   right: 0;
-  height: 18px;
+  height: var(--fade-size);
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
 .fade-top {
   top: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+  background: linear-gradient(to bottom, var(--fade-dark-35), transparent);
   opacity: var(--fade-top-opacity);
 }
 .fade-bottom {
   bottom: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.35), transparent);
+  background: linear-gradient(to top, var(--fade-dark-35), transparent);
   opacity: var(--fade-bottom-opacity);
 }
 
-
-/* Default colors */
-.location-link.website-link {
-  color: #EFA8B8;  /* Sakura Pink */
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.15s ease, text-decoration-color 0.1s ease;
-}
-
-.location-link.map-link {
-  color: #A3D5FF;  /* Water Blue */
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.15s ease, text-decoration-color 0.1s ease;
-}
-
-/* Shared hover & focus state */
-.location-link:hover,
-.location-link:focus {
-  color: #ff8c00;  /* Kurenai Crimson */
-  text-decoration: underline;
-}
-
-/* ============================
-   RESPONSIVE (Mobile Stacked)
-   ============================ */
+/* Modal stacks on small screens to prioritize legibility of text. */
 @media (max-width: 880px) {
   .modal {
     flex-direction: column;
@@ -408,10 +451,10 @@ html[lang="ru"] .sub {
   }
   .img-wrap {
     flex: 0 0 auto;
-    height: 40vh;              /* Allocate top section */
+    height: 40vh; /* allocate top section */
   }
   .recipe {
-    flex: 1 1 auto;            /* Recipe takes remaining space */
+    flex: 1 1 auto; /* recipe takes remaining space */
   }
   .recipe-content {
     overflow-y: auto;
