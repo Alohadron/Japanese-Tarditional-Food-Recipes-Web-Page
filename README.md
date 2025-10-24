@@ -42,16 +42,23 @@ To run this properly, you must use a local development server.
 
 (or another port shown in your terminal)
 
-📁 Project Structure
+**D) Project Structure**
+
 ├── index.html        # Main web page
+
 ├── style.css         # Stylesheet
+
 ├── script.js         # Main JavaScript logic
+
 ├── /data             # JSON files containing recipes
+
 ├── /images           # Food images
+
 ├── /patterns         # UI pattern assets
+
 └── Japanese Food List.doc  # Reference document for recipes
 
-**D) Usage**
+**E) Usage**
 
   Browse recipes via the homepage
 
