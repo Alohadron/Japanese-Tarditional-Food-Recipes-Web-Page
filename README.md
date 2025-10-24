@@ -12,6 +12,7 @@ A front-end web project that showcases authentic Japanese traditional food recip
 5. ⚡ Fast reload using a local development server
 
 * Tech Stack
+  
 Technology	Purpose
 HTML	Page structure
 CSS	Styling and responsive layout
@@ -37,9 +38,11 @@ You can verify with these commands:
 cd Japanese-Tarditional-Food-Recipes-Web-Page
 
 📦 Step 2: Install live-server globally (only once)
+
 ```npm install -g live-server```
 
 ▶️ Step 3: Start the development server
+
 ```live-server```
 
 
@@ -65,7 +68,7 @@ This will:
 
 * Usage
 
-Browse recipes via the homepage
+  Browse recipes via the homepage
 Click on items to view ingredients, preparation method, and cultural insights
 All content is loaded dynamically using JavaScript and JSON
 
