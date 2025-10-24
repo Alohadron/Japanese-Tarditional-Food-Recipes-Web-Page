@@ -30,17 +30,17 @@ Make sure you have Node.js and npm installed.
 
 You can verify with these commands:
 
-```node -v
-```npm -v
+```node -v```
+```npm -v```
 
 📂 Step 1: Navigate to the project folder
 cd Japanese-Tarditional-Food-Recipes-Web-Page
 
 📦 Step 2: Install live-server globally (only once)
-```npm install -g live-server
+```npm install -g live-server```
 
 ▶️ Step 3: Start the development server
-```live-server
+```live-server```
 
 
 This will:
