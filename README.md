@@ -31,39 +31,14 @@ A front-end web project that showcases authentic Japanese traditional food recip
 This project uses JSON files, which cannot be loaded by directly opening the HTML file in a browser due to browser security restrictions (CORS).
 To run this properly, you must use a local development server.
 
-✅ Prerequisites
-
-Make sure you have Node.js and npm installed.
-
-You can verify with these commands:
-
-```node -v```
-```npm -v```
-
-📂 Step 1: Navigate to the project folder
-cd Japanese-Tarditional-Food-Recipes-Web-Page
-
-📦 Step 2: Install live-server globally (only once)
-
-```npm install -g live-server```
-
-▶️ Step 3: Start the development server
-
-```live-server```
+1. In VS Code install "Live Server" Extension by Ritwick Dey
 
 
-This will:
+<img width="922" height="197" alt="Screenshot 2025-10-24 044544" src="https://github.com/user-attachments/assets/54422f09-c8ec-4ee0-92bc-1fca1c00fb0f" />
 
-- Launch your default browser
+2. On the bottom right press Go Live 
 
-- Serve files correctly with JSON support
-
-- Auto-reload when you make changes
-
-- Your site will be available at:
-
-- http://127.0.0.1:8080
-
+<img width="153" height="45" alt="Screenshot 2025-10-24 044708" src="https://github.com/user-attachments/assets/141ccd83-c40e-48e8-8bb0-55c86c260de5" />
 
 (or another port shown in your terminal)
 
