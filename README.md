@@ -3,7 +3,7 @@ Japanese Traditional Food Recipes Web Page
 A front-end web project that showcases authentic Japanese traditional food recipes using a clean interface and JSON-powered dynamic content. This project is ideal for learning front-end development and exploring Japanese culinary culture.
 
 
-A) Features: 
+**A) Features:** 
 
 1. 📖 Dynamic recipe loading from JSON files
 2. 🧭 Simple and intuitive user navigation
@@ -11,7 +11,8 @@ A) Features:
 4. 📱 Mobile-responsive layout
 5. ⚡ Fast reload using a local development server
 
-B) Tech Stack
+
+**B) Tech Stack**
   
   Technology	Purpose
 
@@ -75,7 +76,7 @@ This will:
 ├── /patterns         # UI pattern assets
 └── Japanese Food List.doc  # Reference document for recipes
 
-C) Usage
+**C) Usage**
 
   Browse recipes via the homepage
 
@@ -92,8 +93,9 @@ C) Usage
   🌐 Multi-language support (Japanese/English toggle)
 
   🧁 Add dessert category & seasonal dishes
+  
 
-D) Contributing
+**D) Contributing**
 
   Contributions are welcome!
 
@@ -106,6 +108,6 @@ D) Contributing
   Open a Pull Request
 
 
-📄 License
+**📄 License**
 
 This project is licensed under the MIT License.
