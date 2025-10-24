@@ -72,6 +72,58 @@
 }
 
 /* ==========================================================================
+   LIGHT MODE THEME (Warm Style)
+   ========================================================================== */
+:root[data-theme="light"] {
+  /* Base Colors */
+  --color-bg-page: #f4f1e9;
+  --subtitle-bg: rgb(255, 136, 255);
+  --color-surface-card: rgba(255, 220, 255, 0.814);
+  --color-surface-modal: #ffc8c8;
+  --color-text-primary: #3c2f2f; /* deep warm brown */
+  --color-text-contrast: #000000eb;
+  --color-accent: rgba(255, 136, 255, 0.908); /* warm earthy orange */
+  --color-link-website: #b34d4d;
+  --color-link-map: #356d88;
+  --overlay-bg: rgba(255, 255, 255, 0.7);
+  --shadow-card: 0 4px 12px rgb(255, 136, 255);
+}
+
+/* ==========================================================================
+   THEME TOGGLE STYLING
+   ========================================================================== */
+.theme-toggle-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.theme-toggle-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-select);
+  background: var(--select-bg);
+  backdrop-filter: blur(8px) saturate(140%);
+  color: var(--color-text-contrast);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition-slow), border-color var(--transition-slow), transform var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--select-bg-hover);
+  border-color: var(--color-accent);
+  transform: scale(1.03);
+}
+
+.theme-toggle-btn:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+
+
+/* ==========================================================================
    2) GLOBAL RESETS & BASE STYLES
    --------------------------------------------------------------------------
    Keep resets minimal; rely on variables for theming and consistency.
@@ -459,4 +511,139 @@ html[lang="ru"] .sub { font-size: 11px; } /* accommodate longer words */
   .recipe-content {
     overflow-y: auto;
   }
+}
+
+/* ==========================================================================
+   🌸 LIGHT MODE — FINAL OVERRIDES (Warm, Soft Aesthetic)
+   ========================================================================== */
+
+/* Global Light Background */
+html[data-theme="light"] body {
+  background-image: url('patterns/light-background2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-page);
+}
+
+/* Header & Text */
+html[data-theme="light"] .subtitle {
+  background: var(--subtitle-bg);
+  background-blend-mode: normal;
+  box-shadow: 2px 6px 20px rgb(255, 255, 255);
+}
+
+/* Cards */
+html[data-theme="light"] .card {
+  background: var(--color-surface-card);
+  background-blend-mode: normal;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(255, 136, 255, 0.3);
+}
+
+html[data-theme="light"] .card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(255, 136, 255, 0.6);
+}
+
+html[data-theme="light"] .card-info .title,
+html[data-theme="light"] .card-info .desc {
+  color: var(--color-text-primary);
+}
+
+html[data-theme="light"] .sub {
+  color: var(--color-text-contrast);
+}
+
+/* Modal */
+html[data-theme="light"] .modal {
+  background: var(--color-surface-modal) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 10px 40px rgba(255, 136, 255, 0.3) !important;
+}
+
+html[data-theme="light"] .recipe,
+html[data-theme="light"] .modal h2,
+html[data-theme="light"] .modal .section-title,
+html[data-theme="light"] .modal li,
+html[data-theme="light"] .modal p {
+  color: var(--color-text-primary) !important;
+}
+
+/* Modal Overlay */
+html[data-theme="light"] .modal-overlay {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(10px) saturate(120%) !important;
+}
+
+/* Close Button */
+html[data-theme="light"] .close-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: var(--color-text-contrast) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="light"] .close-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: var(--color-accent) !important;
+}
+
+/* Modal Image Wrapper */
+html[data-theme="light"] .img-wrap {
+  background: #ffffff !important;
+}
+
+/* Modal Arrows */
+html[data-theme="light"] .modal-arrow {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="light"] .modal-arrow:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: var(--color-accent) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Scroll Fades */
+html[data-theme="light"] .fade-top {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.7), transparent) !important;
+}
+html[data-theme="light"] .fade-bottom {
+  background: linear-gradient(to top, rgba(255,255,255,0.7), transparent) !important;
+}
+
+/* Links */
+html[data-theme="light"] .location-link.website-link {
+  color: #b34d4d !important;
+}
+html[data-theme="light"] .location-link.map-link {
+  color: #356d88 !important;
+}
+html[data-theme="light"] .location-link:hover {
+  color: var(--color-accent) !important;
+}
+/* ==========================================================================
+   🌸 LIGHT MODE — LANGUAGE DROPDOWN FIX
+   ========================================================================== */
+html[data-theme="light"] #language-select {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  box-shadow: 0 0 8px rgba(255, 136, 255, 0.4) !important;
+}
+
+html[data-theme="light"] #language-select:hover,
+html[data-theme="light"] #language-select:focus {
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-text-primary) !important;
+}
+
+html[data-theme="light"] #language-select option {
+  background-color: #ffffff !important;  /* pure white dropdown */
+  color: var(--color-text-primary) !important;  /* readable text */
 }

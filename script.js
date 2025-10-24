@@ -540,7 +540,35 @@ export async function initFoodGallery(customConfig = {}) {
   // Bind once
   bindGlobalEvents();
   devLog('Initialized');
+  initTheme();
 }
 
+/* ============================================================================
+   THEME TOGGLING LOGIC
+   ========================================================================== */
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeToggleButton(theme);
+}
+
+function updateThemeToggleButton(theme) {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.textContent = theme === 'light' ? '🌞 Light Mode' : '🌙 Dark Mode';
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyTheme(savedTheme);
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      applyTheme(newTheme);
+    });
+  }
+}
+ 
 /* Default export for convenience in most bundlers */
 export default initFoodGallery;
