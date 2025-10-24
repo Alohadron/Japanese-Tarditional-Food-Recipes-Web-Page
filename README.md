@@ -94,17 +94,18 @@ All content is loaded dynamically using JavaScript and JSON
 
 🧁 Add dessert category & seasonal dishes
 
-🤝 Contributing
 
-Contributions are welcome!
+* Contributing
 
-Fork this repository
+  Contributions are welcome!
 
-Create a branch (feature/new-recipe)
+  Fork this repository
 
-Commit your changes
+  Create a branch (feature/new-recipe)
 
-Open a Pull Request
+  Commit your changes
+
+  Open a Pull Request
 
 
 📄 License
